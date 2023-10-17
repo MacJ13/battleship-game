@@ -1,4 +1,5 @@
 $main-color: #052236;
+$modal-bg: #133d5963;
 
 *,
 *::after,
@@ -28,6 +29,7 @@ ul {
 input[type="text"],
 button {
   appearance: none;
+  border: none;
 }
 
 button:hover {
@@ -49,8 +51,23 @@ input:focus {
 
 .h1 {
   font-size: 3.25rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5rem;
 }
 
 .h2 {
   font-size: 2.25rem;
+}
+
+.modal {
+  align-items: center;
+  background-color: $modal-bg;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  left: 0;
+  position: fixed;
+  top: 0;
+
+  width: 100%;
 }

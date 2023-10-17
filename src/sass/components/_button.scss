@@ -1,0 +1,12 @@
+$btn-txt-color: #f0f9ff;
+
+$btn-bg-color: #052236;
+
+.btn-main {
+  background-color: $btn-bg-color;
+  color: $btn-txt-color;
+  font-size: 1rem;
+  padding: 0.65rem 0;
+  text-transform: capitalize;
+  width: 8rem;
+}

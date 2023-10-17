@@ -1,0 +1,237 @@
+$board-bg-color: #082f49;
+$board-border: 2px solid $board-bg-color;
+$board-shadow: 0px 0px 22px -12px rgba(66, 68, 90, 1);
+
+$cell-size: 1.75rem;
+$ship-item-size: 0.5rem;
+$amount-size: 2rem;
+
+$cell-bg-color: #f9fafb;
+$cell-reserved-bg: #cfe9fb;
+$cell-hit-bg: #f87171;
+$cell-miss-bg: #082f49;
+
+$cell-ship-bg: #3b82f6 !important;
+$cell-hit-color: #f0f9ff;
+
+$game-btn-bg: #052236;
+
+$game-ship-bg: #fff;
+$game-ship-border: 2px solid #fff;
+
+.game {
+  //   display: none;
+  margin: 0 auto;
+  max-width: 1000px;
+  width: 100%;
+
+  &-container {
+    display: flex;
+    gap: 5rem;
+    justify-content: center;
+  }
+
+  &-box {
+    display: flex;
+    gap: 2rem;
+  }
+
+  &-ships {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &-list-ship {
+    align-items: end;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+
+    & .sunk {
+      opacity: 1;
+    }
+  }
+
+  &-item-ship {
+    display: flex;
+    gap: 0.25rem;
+    opacity: 0.25;
+  }
+
+  &-item-part {
+    background-color: $cell-miss-bg;
+    height: $ship-item-size;
+    width: $ship-item-size;
+  }
+
+  &-panel {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+
+  &-board {
+    background-color: $board-bg-color;
+    border: $board-border;
+    box-shadow: $board-shadow;
+    display: grid;
+
+    gap: 2px;
+    grid-template-columns: repeat(10, 1fr);
+
+    padding: 2px;
+
+    & .reserved {
+      background-color: $cell-reserved-bg;
+    }
+  }
+
+  &-cell {
+    align-items: center;
+    background-color: $cell-bg-color;
+    display: flex;
+    height: $cell-size;
+    justify-content: center;
+    position: relative;
+    width: $cell-size;
+
+    &-ship {
+      background-color: $cell-ship-bg;
+    }
+
+    & .hit {
+      background-color: $cell-hit-bg;
+      color: $cell-hit-color;
+      content: "\2716";
+      font-size: 0.75rem;
+      height: 100%;
+      position: relative;
+      width: 100%;
+
+      &::before {
+        left: 50%;
+
+        position: absolute;
+        top: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+
+    & .miss {
+      background-color: $cell-miss-bg;
+      border-radius: 50%;
+      padding: 0.2rem;
+    }
+  }
+
+  &-playername {
+    margin-top: 1rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    text-transform: capitalize;
+  }
+
+  &-controls {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 1.5rem;
+
+    margin: 0 auto;
+    margin-bottom: 2rem;
+    max-width: 18rem;
+    width: 100%;
+  }
+
+  &-btn {
+    background-color: $game-btn-bg;
+    color: $cell-hit-color;
+    font-size: 1rem;
+    padding: 0.65rem 0;
+    text-transform: capitalize;
+    width: 8rem;
+  }
+
+  &-ship {
+    display: flex;
+    flex-direction: column;
+    height: 10rem;
+    position: relative;
+    width: 100%;
+
+    &-pick {
+      align-items: center;
+      display: flex;
+      justify-content: center;
+      left: 50%;
+
+      position: absolute;
+      transform: translateX(-50%);
+    }
+
+    &-object {
+      background-color: $game-ship-bg;
+      border: $game-ship-border;
+      cursor: pointer;
+      display: grid;
+      flex: 1;
+      gap: 2px;
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    &-part {
+      background-color: $cell-ship-bg;
+      height: $cell-size;
+      width: $cell-size;
+    }
+
+    &-amount {
+      align-items: center;
+      background-color: $game-btn-bg;
+      border-radius: 2rem;
+
+      color: $cell-bg-color;
+      display: flex;
+
+      height: $amount-size;
+      justify-content: center;
+      margin: auto;
+      width: $amount-size;
+    }
+  }
+
+  &-turn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1.5rem;
+  }
+
+  &-current-name {
+    background-color: $game-btn-bg;
+    color: $cell-hit-color;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    padding: 1rem;
+    text-align: center;
+    text-transform: uppercase;
+    width: 18.5rem;
+    word-spacing: 5px;
+  }
+}
+
+#game-computer {
+  flex-direction: row-reverse;
+
+  & .game-list-ship {
+    align-items: start;
+  }
+
+  & .game-board {
+    cursor: pointer;
+  }
+}
+
+#play {
+  width: 100%;
+}

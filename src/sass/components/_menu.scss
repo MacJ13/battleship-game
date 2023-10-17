@@ -1,0 +1,51 @@
+$menu-bg-color: #052236;
+$text-color: #f9fafb;
+$button-bg-color: #3b82f6;
+$focus-input: #85bafb;
+
+.menu {
+  background-color: $menu-bg-color;
+  padding: 1.5rem;
+
+  &-title {
+    color: $text-color;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  &-form {
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 2rem;
+  }
+
+  &-field {
+    & > input {
+      background-color: $text-color;
+      font-size: 1.25rem;
+
+      max-width: 17.5rem;
+      padding: 0.65rem 0.5rem;
+      width: 100%;
+
+      &:focus {
+        outline: 5px solid $focus-input;
+      }
+    }
+  }
+
+  &-button {
+    margin-top: 0.25rem;
+    & > button {
+      background-color: $button-bg-color;
+      color: $text-color;
+      display: inline-block;
+      font-size: 1.25rem;
+      letter-spacing: 0.25rem;
+      max-width: 16.2rem;
+      padding: 1rem 0;
+      text-transform: uppercase;
+      width: 100%;
+    }
+  }
+}

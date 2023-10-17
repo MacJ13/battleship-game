@@ -3,7 +3,10 @@ $text-color: #f9fafb;
 $button-bg-color: #3b82f6;
 $focus-input: #85bafb;
 
+$box-bg-color: #f0f9ff;
+
 .menu {
+  display: none;
   background-color: $menu-bg-color;
   padding: 1.5rem;
 
@@ -48,4 +51,21 @@ $focus-input: #85bafb;
       width: 100%;
     }
   }
+}
+
+.box {
+  align-items: center;
+  background-color: $box-bg-color;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 30rem;
+  padding: 2.5rem;
+  width: 100%;
+}
+
+.result {
+  font-size: 2rem;
+  margin-bottom: 2.5rem;
 }

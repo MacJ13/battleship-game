@@ -1,0 +1,56 @@
+$main-color: #052236;
+
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+body {
+  background-color: #f0f9ff;
+  color: $main-color;
+  min-height: 100vh;
+  position: relative;
+  width: 100%;
+}
+
+ul {
+  list-style-type: none;
+}
+
+input[type="text"],
+button {
+  appearance: none;
+}
+
+button:hover {
+  opacity: 0.75;
+}
+
+input:focus {
+  outline: none;
+}
+
+.header {
+  width: 100%;
+  padding: 2.5rem 1.75rem;
+
+  & > * {
+    text-align: center;
+  }
+}
+
+.h1 {
+  font-size: 3.25rem;
+}
+
+.h2 {
+  font-size: 2.25rem;
+}

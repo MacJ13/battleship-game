@@ -26,6 +26,7 @@ class Gameboard {
   }
 
   createGameboard() {
+    this.clearGameboard();
     for (let i = 0; i < Gameboard.maxSize; i++) {
       this.board[i] = [];
     }
@@ -118,6 +119,30 @@ class Gameboard {
     }
 
     return ship;
+  }
+
+  addRandomShips(ships) {
+    this.createGameboard();
+
+    while (ships.length > 0) {
+      let posA = Math.floor(Math.random() * Gameboard.maxSize);
+      let posB = Math.floor(Math.random() * Gameboard.maxSize);
+
+      let direction = Math.floor(Math.random() * this.directions.length);
+
+      /// ??????
+      //// NIE WIEM CZY DZIAŁA
+      //////
+      if (direction) {
+        this.changeDirection();
+      }
+
+      const [first, ...others] = ships;
+      const result = this.addShip(posA, posB, first);
+      if (result) ships = others;
+    }
+
+    return this.board;
   }
 }
 

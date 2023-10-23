@@ -6,7 +6,7 @@ class Game {
   shipQueue = new Queue();
   currentPlayer = new User();
   enemyPlayer = new Computer();
-  userPlaying = false;
+  // userPlaying = false;
 
   constructor() {
     this.addQueueShips();
@@ -16,16 +16,46 @@ class Game {
     this.currentPlayer.setName(name);
   }
 
+  getCurrentPlayerGameboard() {
+    return this.currentPlayer.getPlayerBoard();
+  }
+
+  getCurrentPlayer() {
+    return this.currentPlayer;
+  }
+
+  getEnemyPlayer() {
+    return this.enemyPlayer;
+  }
+
+  userPlaying() {
+    return this.currentPlayer instanceof User;
+  }
+
+  changeCurrentPlayer() {
+    const temp = this.currentPlayer;
+    this.currentPlayer = this.enemyPlayer;
+    this.enemyPlayer = temp;
+  }
+
   getPlayers() {
     return [this.currentPlayer, this.enemyPlayer];
+  }
+
+  getGameboardDirection() {
+    return this.currentPlayer.getCurrentBoardDirection();
+  }
+
+  changeGameboardDirection() {
+    this.currentPlayer.changeCurrentBoardDirection();
   }
 
   getQueueShip() {
     return this.shipQueue.peek();
   }
 
-  getCountQueueShip() {
-    return this.shipQueue.countShipType();
+  dequeShip() {
+    this.shipQueue.dequeue();
   }
 
   addQueueShips() {
@@ -34,7 +64,7 @@ class Game {
   }
 
   sameLengthShips(current) {
-    const peekLength = this.shipQueue.peek().getLength();
+    const peekLength = this.getQueueShip().getLength();
 
     const condition = peekLength !== current.getLength();
 
@@ -42,6 +72,7 @@ class Game {
   }
 
   getCurrentShipLeft() {
+    if (!this.userPlaying()) return;
     const cb = this.sameLengthShips.bind(this);
     return this.shipQueue.countElement(cb);
   }

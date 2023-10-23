@@ -195,7 +195,8 @@ $game-ship-border: 2px solid #fff;
 
       height: $amount-size;
       justify-content: center;
-      margin: auto;
+      // margin: auto;
+      margin-left: 1rem;
       width: $amount-size;
     }
   }
@@ -220,9 +221,8 @@ $game-ship-border: 2px solid #fff;
   }
 }
 
-#game-computer {
+#computer {
   flex-direction: row-reverse;
-
   & .game-list-ship {
     align-items: start;
   }

@@ -139,6 +139,12 @@ class GameplayView {
   hideShipPick() {
     this.gameShipPickEl.classList.add("hidden");
   }
+
+  onClickShipEl(cb) {
+    this.gameShipObjectEl.addEventListener("click", () => {
+      cb();
+    });
+  }
 }
 
 export default GameplayView;

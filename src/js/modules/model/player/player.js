@@ -46,6 +46,10 @@ class Player {
   addRandomShipsPosition() {
     this.gameboard.addRandomShips(this.ships);
   }
+
+  addShipOnPlayerGameboard(posA, posB, ship) {
+    return this.gameboard.addShip(+posA, +posB, ship);
+  }
 }
 
 export default Player;

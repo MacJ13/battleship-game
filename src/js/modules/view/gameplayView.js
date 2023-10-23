@@ -140,9 +140,52 @@ class GameplayView {
     this.gameShipPickEl.classList.add("hidden");
   }
 
+  // EVENT FUNCTIONS
+
   onClickShipEl(cb) {
     this.gameShipObjectEl.addEventListener("click", () => {
       cb();
+    });
+  }
+
+  onDragShipEl(board) {
+    // start draggable
+    this.gameShipObjectEl.addEventListener("dragstart", (event) => {
+      this.draggedEl = event.target; // target element, which is draggeble
+    });
+
+    this.gameShipObjectEl.addEventListener("dragend", () => {
+      // fires when user en to drag element;
+    });
+  }
+
+  onDropShipEl(cb) {
+    // const gameBoardEl = this.gameUserEl.querySelector(".game-board");
+
+    this.gameboardUserEl.addEventListener("dragover", (event) => {
+      event.preventDefault();
+    });
+
+    this.gameboardUserEl.addEventListener("drop", (event) => {
+      event.preventDefault();
+
+      if (!this.draggedEl || !event.target.classList.contains("game-cell"))
+        return;
+
+      const { posA, posB } = event.target.dataset;
+      const { direction } = this.draggedEl.dataset;
+
+      const dataDOM = {
+        posA,
+        posB,
+        direction,
+      };
+
+      this.draggedEl = null;
+
+      cb(dataDOM);
+
+      // console.log(dataDOM);
     });
   }
 }

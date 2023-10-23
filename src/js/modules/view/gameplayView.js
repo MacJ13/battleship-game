@@ -140,6 +140,18 @@ class GameplayView {
     this.gameShipPickEl.classList.add("hidden");
   }
 
+  showReservedCells(board) {
+    this.gameboardUserEl.querySelectorAll(".game-cell").forEach((cell) => {
+      const { posA, posB } = cell.dataset;
+      console.log({ pos: posA + posB }, board[+posA][+posB]);
+      const { reserved } = board[+posA][+posB];
+
+      if (reserved) {
+        cell.classList.add("reserved");
+      }
+    });
+  }
+
   // EVENT FUNCTIONS
 
   onClickShipEl(cb) {
@@ -152,6 +164,7 @@ class GameplayView {
     // start draggable
     this.gameShipObjectEl.addEventListener("dragstart", (event) => {
       this.draggedEl = event.target; // target element, which is draggeble
+      this.showReservedCells(board);
     });
 
     this.gameShipObjectEl.addEventListener("dragend", () => {

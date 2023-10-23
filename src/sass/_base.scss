@@ -1,3 +1,15 @@
+@font-face {
+  font-family: "Montserrat";
+  src: url("./../assets/fonts/Montserrat-Medium.ttf") format("truetype");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: url("./../assets/fonts/Montserrat-Regular.ttf") format("truetype");
+  font-weight: 500;
+}
+
 $main-color: #052236;
 $modal-bg: #133d5963;
 
@@ -20,6 +32,7 @@ body {
   min-height: 100vh;
   position: relative;
   width: 100%;
+  font-family: "Montserrat", sans-serif;
 }
 
 ul {
@@ -30,6 +43,10 @@ input[type="text"],
 button {
   appearance: none;
   border: none;
+}
+
+button {
+  font-family: "Montserrat", sans-serif;
 }
 
 button:hover {
@@ -51,6 +68,7 @@ input:focus {
 
 .h1 {
   font-size: 3.25rem;
+  font-family: "Times New Roman", Times, serif;
   text-transform: uppercase;
   letter-spacing: 0.5rem;
 }

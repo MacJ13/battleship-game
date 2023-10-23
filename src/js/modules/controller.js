@@ -22,6 +22,15 @@ const addShipOnBoard = (data) => {
   gameplayView.renderShipPick(ship, game.getCurrentShipLeft(), direction);
 };
 
+const changeShipDirection = () => {
+  game.changeGameboardDirection();
+  const ship = game.getQueueShip();
+  const count = game.getCurrentShipLeft();
+  const direction = game.getGameboardDirection();
+
+  gameplayView.renderShipPick(ship, count, direction);
+};
+
 const startGame = (name) => {
   const players = game.getPlayers();
   const ship = game.getQueueShip();

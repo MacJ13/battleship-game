@@ -35,10 +35,16 @@ const startGame = (name) => {
   const players = game.getPlayers();
   const ship = game.getQueueShip();
   const count = game.getCurrentShipLeft();
+  const playerGameboard = game.getCurrentPlayerGameboard();
+  const direction = game.getGameboardDirection();
   game.setUserPlayerName(name);
 
   gameplayView.renderGameplay(players);
   gameplayView.renderShipPick(ship, count, direction);
+
+  gameplayView.onClickShipEl(changeShipDirection);
+  gameplayView.onDragShipEl(playerGameboard);
+  gameplayView.onDropShipEl(addShipOnBoard);
 };
 
 const init = () => {

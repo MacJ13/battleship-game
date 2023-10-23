@@ -31,6 +31,10 @@ class Player {
     return this.gameboard.getGameboard();
   }
 
+  getCurrentBoardDirection() {
+    return this.gameboard.getDirection();
+  }
+
   clearPlayerBoard() {
     this.gameboard.createGameboard();
   }

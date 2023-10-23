@@ -2,7 +2,7 @@ class Gameboard {
   static maxSize = 10;
   board = [];
 
-  directions = ["vertical", "horizontal"];
+  directions = ["horizontal", "vertical"];
 
   constructor() {
     this.createGameboard();
@@ -59,13 +59,11 @@ class Gameboard {
     if (direction === "horizontal") {
       // check if we can ship lenght can be put in current cell;
       if (shipLength + posB > Gameboard.maxSize) return;
-
       //check if other cells for ship is empty or reserved
       for (let i = 1; i < shipLength; i++) {
         const { shipCell, reserved } = this.board[posA][posB + i];
         if (shipCell || reserved) return;
       }
-
       // fill board position with ship elements
       for (let i = 0; i < shipLength; i++) {
         this.board[posA][posB + i].shipCell = ship;
@@ -73,10 +71,10 @@ class Gameboard {
 
       // fill board with reserved cells around ship elements
       for (let i = -1; i <= 1; i++) {
-        console.log(this.board[posA + i]);
+        // console.log(this.board[posA + i]);
         if (!this.board[posA + i]) continue;
         for (let j = -1; j <= shipLength; j++) {
-          console.log(this.board[posA + i]);
+          // console.log(this.board[posA + i]);
           if (
             posB + j < 0 ||
             posB + j >= Gameboard.maxSize ||

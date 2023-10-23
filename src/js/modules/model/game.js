@@ -42,7 +42,8 @@ class Game {
   }
 
   getCurrentShipLeft() {
-    return this.shipQueue.countElement(this.sameLengthShips.bind(this));
+    const cb = this.sameLengthShips.bind(this);
+    return this.shipQueue.countElement(cb);
   }
 }
 

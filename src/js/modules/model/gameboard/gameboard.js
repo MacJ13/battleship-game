@@ -91,7 +91,8 @@ class Gameboard {
 
       // check if cell is empty or reserved for ship length
       for (let i = 0; i < shipLength; i++) {
-        const { shipCell, reserved } = this.board[posA + 1][posB];
+        const { shipCell, reserved } = this.board[posA + i][posB];
+
         if (shipCell || reserved) return;
       }
       // fill board position with ship elements
@@ -115,6 +116,8 @@ class Gameboard {
         }
       }
     }
+
+    console.log(this.board);
 
     return ship;
   }

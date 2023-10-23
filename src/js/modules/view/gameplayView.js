@@ -118,6 +118,20 @@ class GameplayView {
     this.gameShipAmountEl.textContent = `x${count}`;
   }
 
+  renderGameboardShip(dataBoard, ship) {
+    const { posA, posB, direction } = dataBoard;
+
+    for (let i = 0; i < ship.getLength(); i++) {
+      const cellPosA = direction === "vertical" ? i * 1 + +posA : +posA;
+      const cellPosB = direction == "vertical" ? +posB : +posB + i * 1;
+      console.log({ cellPosA, cellPosB });
+      const partEl = this.gameUserEl.querySelector(
+        `[data-pos-a="${cellPosA}"][data-pos-b="${cellPosB}"]`
+      );
+      partEl.classList.add("game-cell-ship");
+    }
+  }
+
   showShipPick() {
     this.gameShipPickEl.classList.remove("hidden");
   }

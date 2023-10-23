@@ -1,13 +1,15 @@
 class GameplayView {
   gameEl = document.querySelector(".game");
-  gamePlayer1El = document.getElementById("user");
-  gamePlayer2El = document.getElementById("computer");
+  gameUserEl = document.getElementById("user");
+  gameComputerEl = document.getElementById("computer");
 
-  gameControlsEl = this.gamePlayer1El.querySelector(".game-controls");
-  gameShipPickEl = this.gamePlayer1El.querySelector(".game-ship-pick");
+  gameboardUserEl = this.gameUserEl.querySelector(".game-board");
 
-  gameShipObjectEl = this.gamePlayer1El.querySelector(".game-ship-object");
-  gameShipAmountEl = this.gamePlayer1El.querySelector(".game-ship-amount");
+  gameControlsEl = this.gameUserEl.querySelector(".game-controls");
+  gameShipPickEl = this.gameUserEl.querySelector(".game-ship-pick");
+
+  gameShipObjectEl = this.gameUserEl.querySelector(".game-ship-object");
+  gameShipAmountEl = this.gameUserEl.querySelector(".game-ship-amount");
 
   draggedEl = null;
 
@@ -87,9 +89,10 @@ class GameplayView {
     }
   }
 
-  renderShipPick(ship, count) {
+  renderShipPick(ship, count, direction) {
     this.showShipPick();
     this.gameShipObjectEl.innerHTML = "";
+    this.gameShipObjectEl.setAttribute("data-direction", direction);
 
     if (!ship) {
       this.hideShipPick();
@@ -105,8 +108,6 @@ class GameplayView {
 
       this.gameShipObjectEl.appendChild(span);
     }
-
-    const { direction } = this.gameShipObjectEl.dataset;
 
     if (direction === "horizontal") {
       this.gameShipObjectEl.style.gridTemplateColumns = `repeat(${this.gameShipObjectEl.children.length}, 1fr)`;

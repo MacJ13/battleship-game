@@ -102,13 +102,15 @@ $game-ship-border: 2px solid #fff;
     & .hit {
       background-color: $cell-hit-bg;
       color: $cell-hit-color;
-      content: "\2716";
-      font-size: 0.75rem;
+
       height: 100%;
       position: relative;
       width: 100%;
 
       &::before {
+        color: $cell-hit-color;
+        content: "\2716";
+        font-size: 0.75rem;
         left: 50%;
 
         position: absolute;

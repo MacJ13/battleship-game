@@ -18,8 +18,11 @@ const addShipOnBoard = (data) => {
 
   gameplayView.renderGameboardShip(data, ship);
   game.dequeShip();
-  ship = game.getQueueShip();
-  gameplayView.renderShipPick(ship, game.getCurrentShipLeft(), direction);
+  gameplayView.renderShipPick(
+    game.getQueueShip(),
+    game.getCurrentShipLeft(),
+    direction
+  );
 };
 
 const changeShipDirection = () => {

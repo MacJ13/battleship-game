@@ -149,6 +149,22 @@ class GameplayView {
     this.gameEl.insertAdjacentHTML("beforeend", html);
   }
 
+  renderMarkedCell(position, ship, type) {
+    const { posA, posB } = position;
+    const gameboardEl = document.getElementById(type);
+
+    const targetCellEl = gameboardEl.querySelector(
+      `[data-pos-a="${posA}"][data-pos-b="${posB}"]`
+    );
+
+    if (!ship) targetCellEl.classList.add("reserved");
+
+    const span = document.createElement("span");
+    span.className = ship ? "hit" : "miss";
+
+    targetCellEl.appendChild(span);
+  }
+
   changePlayerTurn(name) {
     const el = this.gameEl.querySelector(".game-current-name");
     el.textContent = `${name}'s turn`;
@@ -193,7 +209,6 @@ class GameplayView {
       }
     });
   }
-
   // EVENT FUNCTIONS
 
   onClickPlayBtn(cb) {

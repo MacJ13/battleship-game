@@ -13,6 +13,7 @@ class GameplayView {
 
   playGameButton = document.getElementById("play");
   randomShipButton = document.getElementById("random");
+  resetShipButton = document.getElementById("reset");
 
   draggedEl = null;
 
@@ -178,12 +179,21 @@ class GameplayView {
 
   // EVENT FUNCTIONS
 
+  // reset button event
+  onClickResetBtn(cb) {
+    this.resetShipButton.addEventListener("click", () => {
+      cb();
+    });
+  }
+
+  // random button event
   onClickRandomBtn(cb) {
     this.randomShipButton.addEventListener("click", () => {
       cb();
     });
   }
 
+  // ship object el events
   onClickShipEl(cb) {
     this.gameShipObjectEl.addEventListener("click", () => {
       cb();

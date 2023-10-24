@@ -58,6 +58,14 @@ class Game {
     this.shipQueue.dequeue();
   }
 
+  emptyQueue() {
+    return this.shipQueue.isEmpty();
+  }
+
+  clearQueueShip() {
+    this.shipQueue.clearQueue();
+  }
+
   addQueueShips() {
     const ships = this.currentPlayer.getShips();
     this.shipQueue.addElements(ships);

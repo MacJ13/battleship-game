@@ -6,7 +6,7 @@ class GameplayView {
   gameboardUserEl = this.gameUserEl.querySelector(".game-board");
 
   gameControlsEl = this.gameUserEl.querySelector(".game-controls");
-  gameShipPickEl = this.gameUserEl.querySelector(".game-ship-pick");
+  gameShipEl = this.gameUserEl.querySelector(".game-ship");
 
   gameShipObjectEl = this.gameUserEl.querySelector(".game-ship-object");
   gameShipAmountEl = this.gameUserEl.querySelector(".game-ship-amount");
@@ -142,11 +142,11 @@ class GameplayView {
   }
 
   showShipPick() {
-    this.gameShipPickEl.classList.remove("hidden");
+    this.gameShipEl.classList.remove("hidden");
   }
 
   hideShipPick() {
-    this.gameShipPickEl.classList.add("hidden");
+    this.gameShipEl.classList.add("hidden");
   }
 
   showPlayButton() {

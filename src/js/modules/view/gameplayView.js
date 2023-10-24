@@ -183,6 +183,13 @@ class GameplayView {
 
   // EVENT FUNCTIONS
 
+  onClickPlayBtn(cb) {
+    this.playGameButton.addEventListener("click", () => {
+      this.gameControlsEl.classList.add("hidden");
+      cb();
+    });
+  }
+
   // reset button event
   onClickResetBtn(cb) {
     this.resetShipButton.addEventListener("click", () => {
@@ -245,6 +252,10 @@ class GameplayView {
 
       // console.log(dataDOM);
     });
+  }
+
+  onClickComputerGameboard(cb) {
+    this.
   }
 }
 

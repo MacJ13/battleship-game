@@ -12,6 +12,7 @@ class GameplayView {
   gameShipAmountEl = this.gameUserEl.querySelector(".game-ship-amount");
 
   playGameButton = document.getElementById("play");
+  randomShipButton = document.getElementById("random");
 
   draggedEl = null;
 
@@ -171,6 +172,12 @@ class GameplayView {
   }
 
   // EVENT FUNCTIONS
+
+  onClickRandomBtn(cb) {
+    this.randomShipButton.addEventListener("click", () => {
+      cb();
+    });
+  }
 
   onClickShipEl(cb) {
     this.gameShipObjectEl.addEventListener("click", () => {

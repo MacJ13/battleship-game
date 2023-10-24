@@ -4,6 +4,7 @@ class GameplayView {
   gameComputerEl = document.getElementById("computer");
 
   gameboardUserEl = this.gameUserEl.querySelector(".game-board");
+  gameboardComputerEl = this.gameComputerEl.querySelector(".game-board");
 
   gameControlsEl = this.gameUserEl.querySelector(".game-controls");
   gameShipEl = this.gameUserEl.querySelector(".game-ship");
@@ -293,6 +294,14 @@ class GameplayView {
 
       // console.log(dataDOM);
     });
+  }
+
+  onClickComputerGameboard(cb) {
+    this.gameboardComputerEl.addEventListener("click", cb);
+  }
+
+  removeClickComputerGameboard(cb) {
+    this.gameboardComputerEl.removeEventListener("click", cb);
   }
 }
 

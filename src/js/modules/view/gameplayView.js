@@ -47,6 +47,11 @@ class GameplayView {
     element.textContent = playername + "'s board";
   }
 
+  renderGameboardRandom(board) {
+    const gameboardEl = this.gameUserEl.querySelector(".game-board");
+    this.renderGameboard(gameboardEl, board);
+  }
+
   renderGameboard(element, board) {
     element.innerHTML = "";
 

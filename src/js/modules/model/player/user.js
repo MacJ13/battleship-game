@@ -9,7 +9,7 @@ class User extends Player {
   }
 
   getName() {
-    return this.name;
+    return this.name || "Unknown";
   }
 
   setName(name) {

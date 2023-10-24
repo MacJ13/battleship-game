@@ -50,6 +50,15 @@ class Player {
   addShipOnPlayerGameboard(posA, posB, ship) {
     return this.gameboard.addShip(+posA, +posB, ship);
   }
+
+  receiveAttack(posA, posB) {
+    return this.gameboard.receiveAttack(posA, posB);
+  }
+
+  attackEnemyGameboard(position, enemy) {
+    const { posA, posB } = position;
+    return enemy.receiveAttack(+posA, +posB);
+  }
 }
 
 export default Player;

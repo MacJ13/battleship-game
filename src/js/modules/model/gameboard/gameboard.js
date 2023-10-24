@@ -117,8 +117,6 @@ class Gameboard {
       }
     }
 
-    console.log(this.board);
-
     return ship;
   }
 
@@ -144,6 +142,21 @@ class Gameboard {
     }
 
     return this.board;
+  }
+
+  receiveAttack(posA, posB) {
+    const { marked, shipCell } = this.board[posA][posB];
+
+    //check if element is marked
+    if (marked) return;
+
+    // set marked property to true;
+    this.board[posA][posB].marked = true;
+
+    if (shipCell) shipCell.receiveHit();
+
+    // return object from board
+    return this.board[posA][posB];
   }
 }
 

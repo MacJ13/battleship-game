@@ -38,13 +38,13 @@ describe("gameboard class object", () => {
   test("calls getDirection() method ", () => {
     const direction = gameboard.getDirection();
 
-    expect(direction).toBe("vertical");
+    expect(direction).toBe("horizontal");
   });
 
   test("changes direction", () => {
     gameboard.changeDirection();
 
-    expect(gameboard.getDirection()).toBe("horizontal");
+    expect(gameboard.getDirection()).toBe("vertical");
   });
 
   //   test(" get ")
@@ -90,5 +90,25 @@ describe("addShip() method", () => {
     const ship = new Ship(3);
     const result = gameboard.addShip(0, 2, ship);
     expect(result).toBeFalsy();
+  });
+
+  test("tests receiveAttack() method", () => {
+    const firstAttack = gameboard.receiveAttack(4, 5);
+
+    expect(firstAttack).toBeDefined();
+    expect(firstAttack).toBeTruthy();
+    expect(firstAttack.marked).toBeTruthy();
+    expect(firstAttack.shipCell).toBeFalsy();
+    expect(firstAttack.reserved).toBeFalsy();
+  });
+
+  test("tests receiveAttack() method with hit cell", () => {
+    const attack = gameboard.receiveAttack(0, 3);
+
+    expect(attack.marked).toBe(true);
+    expect(attack).toBeDefined();
+    expect(attack.shipCell).toBeDefined();
+    expect(attack.shipCell.getHits()).toBe(1);
+    expect(attack.shipCell.getSunk()).toBeFalsy();
   });
 });

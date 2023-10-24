@@ -11,6 +11,8 @@ class GameplayView {
   gameShipObjectEl = this.gameUserEl.querySelector(".game-ship-object");
   gameShipAmountEl = this.gameUserEl.querySelector(".game-ship-amount");
 
+  playGameButton = document.getElementById("play");
+
   draggedEl = null;
 
   showGameplay() {
@@ -96,7 +98,7 @@ class GameplayView {
 
     if (!ship) {
       this.hideShipPick();
-
+      this.showPlayButton();
       return;
     }
 
@@ -138,6 +140,10 @@ class GameplayView {
 
   hideShipPick() {
     this.gameShipPickEl.classList.add("hidden");
+  }
+
+  showPlayButton() {
+    this.playGameButton.classList.remove("hidden");
   }
 
   showReservedCells(board) {

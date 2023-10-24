@@ -61,6 +61,13 @@ const changeShipDirection = () => {
   gameplayView.renderShipPick(ship, count, direction);
 };
 
+const runGame = () => {
+  const user = game.getCurrentPlayer();
+  const computer = game.getEnemyPlayer();
+  computer.addRandomShipsPosition();
+  gameplayView.renderPlayerTurn(user.getName());
+};
+
 const startGame = (name) => {
   const players = game.getPlayers();
   const ship = game.getQueueShip();
@@ -78,6 +85,7 @@ const startGame = (name) => {
 
   gameplayView.onClickRandomBtn(addShipPositionRandom);
   gameplayView.onClickResetBtn(resetGameboard);
+  gameplayView.onClickPlayBtn(runGame);
 };
 
 const init = () => {

@@ -6,7 +6,20 @@ const menuView = new MenuView();
 const gameplayView = new GameplayView();
 const game = new Game();
 
-const addShipOnBoard = (data) => {
+const addShipPositionRandom = () => {
+  const user = game.getCurrentPlayer();
+
+  user.addRandomShipsPosition();
+
+  gameplayView.renderGameboardRandom(user.getPlayerBoard());
+  if (!game.emptyQueue()) {
+    game.clearQueueShip();
+    gameplayView.hideShipPick();
+    gameplayView.showPlayButton();
+  }
+};
+
+const addShipPosition = (data) => {
   const { posA, posB } = data;
   const user = game.getCurrentPlayer();
   const direction = game.getGameboardDirection();
@@ -47,7 +60,9 @@ const startGame = (name) => {
 
   gameplayView.onClickShipEl(changeShipDirection);
   gameplayView.onDragShipEl(playerGameboard);
-  gameplayView.onDropShipEl(addShipOnBoard);
+  gameplayView.onDropShipEl(addShipPosition);
+
+  gameplayView.onClickRandomBtn(addShipPositionRandom);
 };
 
 const init = () => {

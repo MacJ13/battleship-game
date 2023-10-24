@@ -32,7 +32,7 @@ class Game {
     return this.currentPlayer instanceof User;
   }
 
-  changeCurrentPlayer() {
+  switchPlayers() {
     const temp = this.currentPlayer;
     this.currentPlayer = this.enemyPlayer;
     this.enemyPlayer = temp;

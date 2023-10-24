@@ -141,6 +141,19 @@ class GameplayView {
     }
   }
 
+  renderPlayerTurn(name) {
+    const html = `<div class="game-turn">
+    <div class="game-current-name">${name}'s turn</div>
+  </div>`;
+
+    this.gameEl.insertAdjacentHTML("beforeend", html);
+  }
+
+  changePlayerTurn(name) {
+    const el = this.gameEl.querySelector(".game-current-name");
+    el.textContent = `${name}'s turn`;
+  }
+
   showShipPick() {
     this.gameShipEl.classList.remove("hidden");
   }
@@ -252,10 +265,6 @@ class GameplayView {
 
       // console.log(dataDOM);
     });
-  }
-
-  onClickComputerGameboard(cb) {
-    this.
   }
 }
 

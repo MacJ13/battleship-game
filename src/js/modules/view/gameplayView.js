@@ -209,6 +209,19 @@ class GameplayView {
       }
     });
   }
+
+  getComputerBoardPosition(event) {
+    const target = event.target;
+    console.dir(target);
+    const cellEl = target.classList.contains("game-cell");
+    if (!cellEl) return;
+
+    console.log(event.target.dataset);
+    const { posA, posB } = event.target.dataset;
+
+    return { posA, posB };
+  }
+
   // EVENT FUNCTIONS
 
   onClickPlayBtn(cb) {

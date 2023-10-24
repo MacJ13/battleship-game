@@ -153,6 +153,10 @@ class GameplayView {
     this.playGameButton.classList.remove("hidden");
   }
 
+  hidePlayButton() {
+    this.playGameButton.classList.add("hidden");
+  }
+
   showReservedCells(board) {
     this.gameboardUserEl.querySelectorAll(".game-cell").forEach((cell) => {
       const { posA, posB } = cell.dataset;

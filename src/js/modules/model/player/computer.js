@@ -1,3 +1,4 @@
+import { binarySearch } from "../../../utils/helpers";
 import ShipPosition from "../shipPosition/shipPosition";
 import Player from "./player";
 

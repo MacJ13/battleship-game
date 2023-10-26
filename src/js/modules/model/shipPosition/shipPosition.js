@@ -124,6 +124,15 @@ class ShipPosition {
     return this.nextPosition;
   }
 
+  getAdjacentHitPositions(position) {
+    if (this.potentialShipPositions.length === 0) {
+      const { posA, posB } = position;
+      this.createPotentialPosition(posA, posB);
+    }
+
+    return this.getNextPotentialShipPosition();
+  }
+
   // clear potential computer positions moves from array
   clearPotentialPosition() {
     this.potentialShipPositions.length = 0;

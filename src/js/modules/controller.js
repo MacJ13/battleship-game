@@ -61,6 +61,38 @@ const changeShipDirection = () => {
   gameplayView.renderShipPick(ship, count, direction);
 };
 
+// function update game state
+const updateGame = (ship) => {
+  // check if ship exists on cell,
+  if (!ship) {
+    // game.switchPlayers();
+    return;
+  }
+  const currentPlayer = game.getCurrentPlayer();
+  // const enemyPlayer = game.getEnemyPlayer();
+
+  if (!game.userPlaying())
+    // we draw random position around target ship
+    currentPlayer.checkShipHitting(ship);
+
+  // check if targetShip is full Sunk
+  if (ship.getSunk()) {
+    // check action for computer play
+    if (!game.userPlaying()) {
+      currentPlayer.uncheckShipHitting(); //after unchecking these settings we draw random position on board
+      currentPlayer.clearPotentialShipPositions(); // we not need potential position after sunk ship around ship fields on enemy board
+      // we remove also reserved positions around ship fields from potential computer positions
+    }
+
+    // set reserved cells as marked
+    //
+  }
+
+  // make actions with exist ship to note on hit boat on
+  // if(!game.userPlaying())
+  // // we
+};
+
 const attackGameboard = (position) => {
   // const position = gameplayView.getComputerBoardPosition(event);
   // if (!position) return;
@@ -82,6 +114,14 @@ const attackGameboard = (position) => {
 
   // render mark on target cell
   gameplayView.renderMarkedCell(position, ship, enemyPlayer.getType());
+
+  // update game state
+  updateGame(ship);
+
+  if (game.userPlaying()) return;
+
+  // game.setTimer(playComputer);
+  // ADD SET TIEMOUT FOR COMPUTER PLAYER
 };
 
 // function make gameplay between user and computer

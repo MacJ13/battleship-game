@@ -73,6 +73,19 @@ class Computer extends Player {
 
     return this.position;
   }
+
+  checkShipHitting(ship) {
+    if (!this.ship) {
+      this.shipHit = true;
+      this.ship = ship;
+    }
+  }
+
+  uncheckShipHitting() {
+    this.shipHit = false;
+    this.ship = null;
+  }
+
   clearPotentialShipPositions() {
     this.potentialShipPositions.clearPotentialPosition();
   }

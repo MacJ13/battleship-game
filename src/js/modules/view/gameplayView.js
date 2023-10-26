@@ -134,7 +134,6 @@ class GameplayView {
     for (let i = 0; i < ship.getLength(); i++) {
       const cellPosA = direction === "vertical" ? i * 1 + +posA : +posA;
       const cellPosB = direction == "vertical" ? +posB : +posB + i * 1;
-      console.log({ cellPosA, cellPosB });
       const partEl = this.gameUserEl.querySelector(
         `[data-pos-a="${cellPosA}"][data-pos-b="${cellPosB}"]`
       );
@@ -148,6 +147,11 @@ class GameplayView {
   </div>`;
 
     this.gameEl.insertAdjacentHTML("beforeend", html);
+  }
+
+  clearPlayerTurn() {
+    const el = this.gameEl.querySelector(".game-turn");
+    el.remove();
   }
 
   renderMarkedCell(position, ship, type) {
@@ -216,7 +220,6 @@ class GameplayView {
   showReservedCells(board) {
     this.gameboardUserEl.querySelectorAll(".game-cell").forEach((cell) => {
       const { posA, posB } = cell.dataset;
-      console.log({ pos: posA + posB }, board[+posA][+posB]);
       const { reserved } = board[+posA][+posB];
 
       if (reserved) {
@@ -228,7 +231,6 @@ class GameplayView {
   hideReservedCells(board) {
     this.gameboardUserEl.querySelectorAll(".game-cell").forEach((cell) => {
       const { posA, posB } = cell.dataset;
-      console.log({ pos: posA + posB }, board[+posA][+posB]);
       const { reserved } = board[+posA][+posB];
 
       if (reserved) {
@@ -239,11 +241,10 @@ class GameplayView {
 
   getComputerBoardPosition(event) {
     const target = event.target;
-    console.dir(target);
+
     const cellEl = target.classList.contains("game-cell");
     if (!cellEl) return;
 
-    console.log(event.target.dataset);
     const { posA, posB } = event.target.dataset;
 
     return { posA, posB };
@@ -317,8 +318,6 @@ class GameplayView {
       this.draggedEl = null;
 
       cb(dataDOM);
-
-      // console.log(dataDOM);
     });
   }
 

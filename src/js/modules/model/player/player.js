@@ -27,6 +27,10 @@ class Player {
     return this.ships;
   }
 
+  allShipsSink() {
+    return this.ships.every((ship) => ship.getSunk());
+  }
+
   getPlayerBoard() {
     return this.gameboard.getGameboard();
   }

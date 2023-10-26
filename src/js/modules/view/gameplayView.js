@@ -184,6 +184,14 @@ class GameplayView {
     });
   }
 
+  renderSunkShip(player) {
+    const shipListEl = document
+      .getElementById(player.getType())
+      .querySelector(".game-list-ship");
+
+    this.renderShipList(shipListEl, player.getShips());
+  }
+
   changePlayerTurn(name) {
     const el = this.gameEl.querySelector(".game-current-name");
     el.textContent = `${name}'s turn`;

@@ -28,6 +28,10 @@ class Game {
     return this.enemyPlayer;
   }
 
+  getCurrentName() {
+    return this.currentPlayer.getName();
+  }
+
   userPlaying() {
     return this.currentPlayer instanceof User;
   }

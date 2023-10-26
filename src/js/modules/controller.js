@@ -61,12 +61,36 @@ const changeShipDirection = () => {
   gameplayView.renderShipPick(ship, count, direction);
 };
 
+const attackGameboard = (position) => {
+  // const position = gameplayView.getComputerBoardPosition(event);
+  // if (!position) return;
+
+  if (game.getTimer()) return;
+
+  // get current and enemy players
+  const currentPlayer = game.getCurrentPlayer();
+  const enemyPlayer = game.getEnemyPlayer();
+
+  // get position of enemy cell from gameboard;
+  const enemyCell = currentPlayer.attackEnemyGameboard(position, enemyPlayer);
+
+  // check if enemyCell is marked or hit
+  if (!enemyCell) return;
+
+  // ship object from board array
+  const ship = enemyCell.shipCell;
+
+  // render mark on target cell
+  gameplayView.renderMarkedCell(position, ship, enemyPlayer.getType());
+};
+
 // function make gameplay between user and computer
 const playGame = (event) => {
   if (game.getTimer()) return;
   const position = gameplayView.getComputerBoardPosition(event);
   if (!position) return;
   console.log(position);
+  attackGameboard(position);
 };
 
 const runGame = () => {

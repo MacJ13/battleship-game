@@ -1,4 +1,3 @@
-import { Queue } from "../ship/ship";
 import Player from "./player";
 
 class User extends Player {

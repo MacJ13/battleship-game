@@ -61,11 +61,22 @@ const changeShipDirection = () => {
   gameplayView.renderShipPick(ship, count, direction);
 };
 
+// function make gameplay between user and computer
+const playGame = (event) => {
+  if (game.getTimer()) return;
+  const position = gameplayView.getComputerBoardPosition(event);
+  if (!position) return;
+  console.log(position);
+};
+
 const runGame = () => {
   const user = game.getCurrentPlayer();
   const computer = game.getEnemyPlayer();
   computer.addRandomShipsPosition();
+  computer.addGameboardPositions();
+
   gameplayView.renderPlayerTurn(user.getName());
+  gameplayView.onClickComputerGameboard(playGame);
 };
 
 const startGame = (name) => {

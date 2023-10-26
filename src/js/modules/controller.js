@@ -61,11 +61,23 @@ const changeShipDirection = () => {
   gameplayView.renderShipPick(ship, count, direction);
 };
 
+const playComputerTurn = () => {
+  // remember now that players are switched
+  // now current player is Computer player !!!!
+  // now enemy is user player !!!
+  const computer = game.getCurrentPlayer();
+  const enemy = game.getEnemyPlayer();
+  /// THIS WHERE IT ENDED
+  const randomPosition = computer.getEnemyPositionBoard(enemy.getPlayerBoard());
+
+  attackGameboard(randomPosition);
+};
+
 // function update game state
 const updateGame = (ship) => {
   // check if ship exists on cell,
   if (!ship) {
-    // game.switchPlayers();
+    game.switchPlayers();
     return;
   }
   const currentPlayer = game.getCurrentPlayer();
@@ -121,7 +133,8 @@ const attackGameboard = (position) => {
   if (game.userPlaying()) return;
 
   // game.setTimer(playComputer);
-  // ADD SET TIEMOUT FOR COMPUTER PLAYER
+  // ADD SET TIEMOUT FOR COMPUTER'S TURN
+  game.setTimer(playComputerTurn);
 };
 
 // function make gameplay between user and computer
@@ -129,7 +142,6 @@ const playGame = (event) => {
   if (game.getTimer()) return;
   const position = gameplayView.getComputerBoardPosition(event);
   if (!position) return;
-  console.log(position);
   attackGameboard(position);
 };
 

@@ -59,6 +59,10 @@ class Player {
     const { posA, posB } = position;
     return enemy.receiveAttack(+posA, +posB);
   }
+
+  addReservedShipPositions(reservedPositions) {
+    this.gameboard.addReservedShipPositions(reservedPositions);
+  }
 }
 
 export default Player;

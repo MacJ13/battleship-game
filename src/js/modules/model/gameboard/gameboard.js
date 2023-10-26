@@ -158,6 +158,13 @@ class Gameboard {
     // return object from board
     return this.board[posA][posB];
   }
+
+  addReservedShipPositions(reservedPositions) {
+    reservedPositions.forEach((position) => {
+      const { posA, posB } = position;
+      if (!this.board[posA][posB].marked) this.board[posA][posB].marked = true;
+    });
+  }
 }
 
 export default Gameboard;

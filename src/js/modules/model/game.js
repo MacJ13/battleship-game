@@ -6,7 +6,7 @@ class Game {
   shipQueue = new Queue();
   currentPlayer = new User();
   enemyPlayer = new Computer();
-  // userPlaying = false;
+  timer;
 
   constructor() {
     this.addQueueShips();
@@ -83,6 +83,17 @@ class Game {
     if (!this.userPlaying()) return;
     const cb = this.sameLengthShips.bind(this);
     return this.shipQueue.countElement(cb);
+  }
+
+  setTimer(cb) {
+    this.timer = setTimeout(() => {
+      this.timer = null;
+      cb();
+    }, 750);
+  }
+
+  getTimer() {
+    return this.timer;
   }
 }
 

@@ -89,6 +89,13 @@ class Computer extends Player {
   clearPotentialShipPositions() {
     this.potentialShipPositions.clearPotentialPosition();
   }
+
+  clearReservedPositions(reservedPositions) {
+    reservedPositions.forEach((position) => {
+      const index = binarySearch(this.availablePositions, position);
+      if (index >= 0) this.availablePositions.splice(index, 1);
+    });
+  }
 }
 
 export default Computer;

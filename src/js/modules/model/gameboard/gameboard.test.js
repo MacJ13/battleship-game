@@ -111,4 +111,16 @@ describe("addShip() method", () => {
     expect(attack.shipCell.getHits()).toBe(1);
     expect(attack.shipCell.getSunk()).toBeFalsy();
   });
+
+  test("tests addReservedShipPositions() method", () => {
+    const ship = new Ship(3);
+    gameboard.changeDirection();
+
+    gameboard.addShip(9, 7, ship);
+    gameboard.addReservedShipPositions(ship.getReservedPositions());
+    const board = gameboard.getGameboard();
+
+    expect(board[9][6].marked).toBe(true);
+    expect(board[8][6].marked).toBe(true);
+  });
 });

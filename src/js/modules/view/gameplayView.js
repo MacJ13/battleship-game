@@ -166,6 +166,24 @@ class GameplayView {
     targetCellEl.appendChild(span);
   }
 
+  renderReservedPositions(type, reservedPositions) {
+    const gameboardEl = document.getElementById(type);
+
+    reservedPositions.forEach((position) => {
+      const { posA, posB } = position;
+      const cellEl = gameboardEl.querySelector(
+        `[data-pos-a="${posA}"][data-pos-b="${posB}"]`
+      );
+
+      if (!cellEl.classList.contains("reserved")) {
+        cellEl.classList.add("reserved");
+        const span = document.createElement("span");
+        span.className = "miss";
+        cellEl.appendChild(span);
+      }
+    });
+  }
+
   changePlayerTurn(name) {
     const el = this.gameEl.querySelector(".game-current-name");
     el.textContent = `${name}'s turn`;

@@ -78,10 +78,12 @@ const updateGame = (ship) => {
   // check if ship exists on cell,
   if (!ship) {
     game.switchPlayers();
+    gameplayView.changePlayerTurn(game.getCurrentName());
     return;
   }
+
   const currentPlayer = game.getCurrentPlayer();
-  // const enemyPlayer = game.getEnemyPlayer();
+  const enemyPlayer = game.getEnemyPlayer();
 
   if (!game.userPlaying())
     // we draw random position around target ship
@@ -94,10 +96,25 @@ const updateGame = (ship) => {
       currentPlayer.uncheckShipHitting(); //after unchecking these settings we draw random position on board
       currentPlayer.clearPotentialShipPositions(); // we not need potential position after sunk ship around ship fields on enemy board
       // we remove also reserved positions around ship fields from potential computer positions
+      currentPlayer.clearReservedPositions(ship.getReservedPositions());
     }
-
     // set reserved cells as marked
-    //
+    enemyPlayer.addReservedShipPositions(ship.getReservedPositions());
+
+    // render reserved cells on gameboard element
+    gameplayView.renderReservedPositions(
+      enemyPlayer.getType(),
+      ship.getReservedPositions()
+    );
+
+    // render sunk ship on ship list element
+    gameplayView.renderSunkShip(enemyPlayer);
+
+    // check if all enemy ships are sunken
+    if (enemyPlayer.allShipsSink()) {
+      gameplayView.removeClickComputerGameboard(playGame);
+      console.log(currentPlayer.getName() + " has won !");
+    }
   }
 
   // make actions with exist ship to note on hit boat on

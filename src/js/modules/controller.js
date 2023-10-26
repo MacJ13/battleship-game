@@ -1,9 +1,11 @@
 import Game from "./model/game";
 import GameplayView from "./view/gameplayView";
 import MenuView from "./view/menuView";
+import ModalView from "./view/modalView";
 
 const menuView = new MenuView();
 const gameplayView = new GameplayView();
+const modalView = new ModalView();
 const game = new Game();
 
 const resetGameboard = () => {
@@ -73,6 +75,13 @@ const playComputerTurn = () => {
   attackGameboard(randomPosition);
 };
 
+// function show modal window when player sunk all ships
+const endGame = () => {
+  modalView.renderGameResult(game.getCurrentName());
+  modalView.toggleModal();
+  gameplayView.clearPlayerTurn();
+};
+
 // function update game state
 const updateGame = (ship) => {
   // check if ship exists on cell,
@@ -113,7 +122,7 @@ const updateGame = (ship) => {
     // check if all enemy ships are sunken
     if (enemyPlayer.allShipsSink()) {
       gameplayView.removeClickComputerGameboard(playGame);
-      console.log(currentPlayer.getName() + " has won !");
+      game.setTimer(endGame);
     }
   }
 

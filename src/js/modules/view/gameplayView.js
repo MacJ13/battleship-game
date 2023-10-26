@@ -88,7 +88,7 @@ class GameplayView {
 
       const cls = isSunk ? "game-item-ship sunk" : "game-item-ship";
 
-      li.classList.add(cls);
+      li.className = cls;
 
       for (let j = 0; j < shipLength; j++) {
         const span = document.createElement("span");

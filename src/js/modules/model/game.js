@@ -1,6 +1,6 @@
 import Computer from "./player/computer";
 import User from "./player/user";
-import { Queue } from "../queue/queue";
+import { Queue } from "./queue/queue";
 
 class Game {
   shipQueue = new Queue();

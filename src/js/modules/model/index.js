@@ -67,6 +67,14 @@ class Game {
     this.currentPlayer.changeCurrentBoardDirection();
   }
 
+  getShipPick() {
+    const ship = this.shipQueue.peek();
+    const currentShipLeft = this.getCurrentShipLeft();
+    const direction = this.getGameboardDirection();
+
+    return { ship, currentShipLeft, direction };
+  }
+
   getQueueShip() {
     return this.shipQueue.peek();
   }

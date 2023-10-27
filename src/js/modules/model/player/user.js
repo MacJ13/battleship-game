@@ -3,8 +3,12 @@ import Player from "./player";
 class User extends Player {
   name;
 
-  constructor(type = "user") {
-    super(type);
+  constructor() {
+    super();
+  }
+
+  getType() {
+    return "user";
   }
 
   getName() {

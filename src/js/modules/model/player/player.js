@@ -3,18 +3,12 @@ import Gameboard from "../gameboard/gameboard";
 import Ship from "../ship/ship";
 
 class Player {
-  type;
   gameboard = new Gameboard();
   ships = [];
   sunkenShips = 0;
 
-  constructor(type) {
-    this.type = type;
+  constructor() {
     this.addShips();
-  }
-
-  getType() {
-    return this.type;
   }
 
   getShips() {

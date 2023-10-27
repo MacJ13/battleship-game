@@ -9,13 +9,18 @@ class Computer extends Player {
   position;
   potentialShipPositions = new ShipPosition();
 
-  constructor(type = "computer") {
-    super(type);
+  constructor() {
+    super();
     this.shipHit = false;
+    this.name = "computer";
+  }
+
+  getType() {
+    return this.name;
   }
 
   getName() {
-    return "computer";
+    return this.name;
   }
 
   selectShipHitting() {

@@ -69,7 +69,6 @@ const playComputerTurn = () => {
   // now enemy is user player !!!
   const computer = game.getCurrentPlayer();
   const enemy = game.getEnemyPlayer();
-  /// THIS WHERE IT ENDED
   const randomPosition = computer.getEnemyPositionBoard(enemy.getPlayerBoard());
   attackGameboard(randomPosition);
 };
@@ -118,16 +117,14 @@ const updateGame = (ship) => {
     );
 
     // render sunk ship on ship list element
-    gameplayView.renderSunkShip(enemyPlayer);
+    gameplayView.renderSunkShip(ship.getID());
+    // gameplayView.renderSunkShip(enemyPlayer);
   }
   // check if all enemy ships are sunken
   if (enemyPlayer.allSunkenShips()) {
     gameplayView.removeClickComputerGameboard(playGame);
     game.setTimer(endGame);
   }
-  // make actions with exist ship to note on hit boat on
-  // if(!game.userPlaying())
-  // // we
 };
 
 const attackGameboard = (position) => {

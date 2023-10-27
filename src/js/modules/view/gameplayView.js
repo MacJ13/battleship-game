@@ -83,12 +83,11 @@ class GameplayView {
 
     for (let i = 0; i < ships.length; i++) {
       const li = document.createElement("li");
-      const isSunk = ships[i].getSunk();
       const shipLength = ships[i].getLength();
+      const shipID = ships[i].getID();
 
-      const cls = isSunk ? "game-item-ship sunk" : "game-item-ship";
-
-      li.className = cls;
+      li.dataset.shipId = shipID;
+      li.className = "game-item-ship";
 
       for (let j = 0; j < shipLength; j++) {
         const span = document.createElement("span");
@@ -188,13 +187,18 @@ class GameplayView {
     });
   }
 
-  renderSunkShip(player) {
-    const shipListEl = document
-      .getElementById(player.getType())
-      .querySelector(".game-list-ship");
-
-    this.renderShipList(shipListEl, player.getShips());
+  renderSunkShip(id) {
+    const shipItemEl = document.querySelector(`[data-ship-id="${id}"]`);
+    shipItemEl.classList.add("sunk");
   }
+
+  // renderSunkShip(player) {
+  //   const shipListEl = document
+  //     .getElementById(player.getType())
+  //     .querySelector(".game-list-ship");
+
+  //   this.renderShipList(shipListEl, player.getShips());
+  // }
 
   changePlayerTurn(name) {
     const el = this.gameEl.querySelector(".game-current-name");

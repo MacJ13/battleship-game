@@ -1,4 +1,4 @@
-import Game from "./model/game";
+import Game from "./model";
 import GameplayView from "./view/gameplayView";
 import MenuView from "./view/menuView";
 import ModalView from "./view/modalView";

@@ -4,18 +4,28 @@ import Player from "./player";
 
 class Computer extends Player {
   availablePositions = [];
-  shipHit = false;
-  ship;
+  shipHit;
+
   position;
   potentialShipPositions = new ShipPosition();
 
   constructor(type = "computer") {
     super(type);
+    this.shipHit = false;
   }
 
   getName() {
     return "computer";
   }
+
+  selectShipHitting() {
+    this.shipHit = true;
+  }
+
+  deselectShipHitting() {
+    this.shipHit = false;
+  }
+
   // method add all possible board positions
   // to availablePositions array
   addGameboardPositions() {
@@ -34,18 +44,13 @@ class Computer extends Player {
   getEnemyPositionBoard(board) {
     // if  ship was hit, get only positions
     // around that ship hit position
-    if (this.shipHit || this.ship) {
+    if (this.shipHit) {
       // get position around position of hit ship
       this.potentialShipPositions.setBoard(board);
       const nextPosition = this.potentialShipPositions.getAdjacentHitPositions(
         this.position
       );
       this.position = nextPosition; // assign this  position to property
-
-      // const index = this.availablePositions.findIndex((el) => {
-      //   const { posA, posB } = nextPosition;
-      //   return posA === el.posA && posB === el.posB;
-      // });
 
       // search correct index of availablePositions array
       const index = binarySearch(this.availablePositions, this.position);
@@ -72,18 +77,6 @@ class Computer extends Player {
     }
 
     return this.position;
-  }
-
-  checkShipHitting(ship) {
-    if (!this.ship) {
-      this.shipHit = true;
-      this.ship = ship;
-    }
-  }
-
-  uncheckShipHitting() {
-    this.shipHit = false;
-    this.ship = null;
   }
 
   clearPotentialShipPositions() {

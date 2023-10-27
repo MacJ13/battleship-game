@@ -93,15 +93,16 @@ const updateGame = (ship) => {
   const currentPlayer = game.getCurrentPlayer();
   const enemyPlayer = game.getEnemyPlayer();
 
-  if (!game.userPlaying())
-    // we draw random position around target ship
-    currentPlayer.checkShipHitting(ship);
+  if (!game.userPlaying()) {
+    // we set true random position around target ship
+    currentPlayer.selectShipHitting();
+  }
 
   // check if targetShip is full Sunk
   if (ship.getSunk()) {
     // check action for computer play
     if (!game.userPlaying()) {
-      currentPlayer.uncheckShipHitting(); //after unchecking these settings we draw random position on board
+      currentPlayer.deselectShipHitting(); //after unchecking these settings we draw random position on board
       currentPlayer.clearPotentialShipPositions(); // we not need potential position after sunk ship around ship fields on enemy board
       // we remove also reserved positions around ship fields from potential computer positions
       currentPlayer.clearReservedPositions(ship.getReservedPositions());

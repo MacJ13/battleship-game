@@ -8,7 +8,6 @@ class ModalView {
   }
 
   renderGameResult(name) {
-    console.log(name);
     this.resultEl.textContent = `${name} has won!`;
   }
 

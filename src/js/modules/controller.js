@@ -154,7 +154,8 @@ const attackGameboard = (position) => {
   // update game state
   updateGame(ship);
 
-  if (game.userPlaying()) return;
+  // stop turn when current player is user or game is over
+  if (game.userPlaying() || game.stopPlaying()) return;
   game.setTimer(playComputerTurn);
 };
 

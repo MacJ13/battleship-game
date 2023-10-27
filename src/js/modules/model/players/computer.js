@@ -1,4 +1,4 @@
-import { binarySearch } from "../../../utils/helpers";
+import { binarySearch, getRandomNumber } from "../../../utils/helpers";
 import ShipPosition from "../shipPosition/shipPosition";
 import Player from "./player";
 
@@ -72,9 +72,10 @@ class Computer extends Player {
       // otherwise randomly get potential board ship
       // position from availablePosition array
     } else {
-      const randomNumber = Math.floor(
-        Math.random() * this.availablePositions.length
-      );
+      const randomNumber = getRandomNumber(this.availablePositions.length);
+      // const randomNumber = Math.floor(
+      //   Math.random() * this.availablePositions.length
+      // );
 
       // assign to element of randomnumber index
       this.position = this.availablePositions[randomNumber];

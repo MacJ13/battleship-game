@@ -1,3 +1,5 @@
+import { getRandomNumber } from "../../../utils/helpers";
+
 class Gameboard {
   static maxSize = 10;
   board = [];
@@ -124,10 +126,11 @@ class Gameboard {
     this.createGameboard();
 
     while (ships.length > 0) {
-      let posA = Math.floor(Math.random() * Gameboard.maxSize);
-      let posB = Math.floor(Math.random() * Gameboard.maxSize);
+      let posA = getRandomNumber(Gameboard.maxSize);
+      let posB = getRandomNumber(Gameboard.maxSize);
 
-      let direction = Math.floor(Math.random() * this.directions.length);
+      let direction = getRandomNumber(this.directions.length);
+      // let direction = Math.floor(Math.random() * this.directions.length);
 
       /// ??????
       //// NIE WIEM CZY DZIAŁA

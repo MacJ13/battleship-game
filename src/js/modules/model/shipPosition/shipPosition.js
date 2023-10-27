@@ -1,3 +1,5 @@
+import { getRandomNumber } from "../../../utils/helpers";
+
 class ShipPosition {
   board = [];
   // properties to choose potential positons
@@ -47,9 +49,11 @@ class ShipPosition {
 
   getNextPotentialShipPosition() {
     // 1. First we get random number for index of array potentialComputerPositions
-    const randomNumber = Math.floor(
-      Math.random() * this.potentialShipPositions.length
-    );
+
+    const randomNumber = getRandomNumber(this.potentialShipPositions.length);
+    // const randomNumber = Math.floor(
+    //   Math.random() * this.potentialShipPositions.length
+    // );
 
     // eventually if element is not in array we return exist nextPosition
     if (!this.potentialShipPositions[randomNumber]) {

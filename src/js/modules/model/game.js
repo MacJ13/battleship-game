@@ -1,5 +1,5 @@
-import Computer from "./player/computer";
-import User from "./player/user";
+import Computer from "./players/computer";
+import User from "./players/user";
 import { Queue } from "./queue/queue";
 
 class Game {

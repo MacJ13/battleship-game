@@ -98,7 +98,8 @@ class GameplayView {
     }
   }
 
-  renderShipPick(ship, count, direction) {
+  renderShipPick(shipPick) {
+    const { ship, currentShipLeft, direction } = shipPick;
     this.showShipPick();
     this.gameShipObjectEl.innerHTML = "";
     this.gameShipObjectEl.setAttribute("data-direction", direction);
@@ -124,7 +125,7 @@ class GameplayView {
       this.gameShipObjectEl.style.gridTemplateColumns = `repeat(1, 1fr)`;
     }
 
-    this.gameShipAmountEl.textContent = `x${count}`;
+    this.gameShipAmountEl.textContent = `x${currentShipLeft}`;
   }
 
   renderGameboardShip(dataBoard, ship) {

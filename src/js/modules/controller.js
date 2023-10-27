@@ -15,11 +15,7 @@ const resetGameboard = () => {
   game.addQueueShips();
   gameplayView.hidePlayButton();
   gameplayView.renderGameboardRandom(user.getPlayerBoard());
-  gameplayView.renderShipPick(
-    game.getQueueShip(),
-    game.getCurrentShipLeft(),
-    game.getGameboardDirection()
-  );
+  gameplayView.renderShipPick(game.getShipPick());
 };
 
 const addShipPositionRandom = () => {
@@ -38,7 +34,6 @@ const addShipPositionRandom = () => {
 const addShipPosition = (data) => {
   const { posA, posB } = data;
   const user = game.getCurrentPlayer();
-  const direction = game.getGameboardDirection();
   let ship = game.getQueueShip();
 
   const onBoard = user.addShipOnPlayerGameboard(posA, posB, ship);
@@ -47,20 +42,12 @@ const addShipPosition = (data) => {
 
   gameplayView.renderGameboardShip(data, ship);
   game.dequeShip();
-  gameplayView.renderShipPick(
-    game.getQueueShip(),
-    game.getCurrentShipLeft(),
-    direction
-  );
+  gameplayView.renderShipPick(game.getShipPick());
 };
 
 const changeShipDirection = () => {
   game.changeGameboardDirection();
-  const ship = game.getQueueShip();
-  const count = game.getCurrentShipLeft();
-  const direction = game.getGameboardDirection();
-
-  gameplayView.renderShipPick(ship, count, direction);
+  gameplayView.renderShipPick(game.getShipPick());
 };
 
 const playComputerTurn = () => {
@@ -179,14 +166,13 @@ const runGame = () => {
 
 const startGame = (name) => {
   const players = game.getPlayers();
-  const ship = game.getQueueShip();
-  const count = game.getCurrentShipLeft();
   const playerGameboard = game.getCurrentPlayerGameboard();
-  const direction = game.getGameboardDirection();
+  const shipPick = game.getShipPick();
+
   game.setUserPlayerName(name);
 
   gameplayView.renderGameplay(players);
-  gameplayView.renderShipPick(ship, count, direction);
+  gameplayView.renderShipPick(shipPick);
 
   gameplayView.onClickShipEl(changeShipDirection);
   gameplayView.onDragShipEl(playerGameboard);
@@ -201,11 +187,7 @@ const restartGame = function () {
   game.restartGame();
 
   gameplayView.renderGameplay(game.getPlayers());
-  gameplayView.renderShipPick(
-    game.getQueueShip(),
-    game.getCurrentShipLeft(),
-    game.getGameboardDirection()
-  );
+  gameplayView.renderShipPick(game.getShipPick());
 
   modalView.toggleModal();
 };

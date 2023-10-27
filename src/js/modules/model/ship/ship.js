@@ -1,10 +1,19 @@
+import { customAlphabet } from "nanoid";
+import { CUSTOM_ALPHABET, SIZE_ID } from "../../../utils/constants";
+
 class Ship {
+  id;
   length;
   hits = 0;
   reservedPositions = [];
 
   constructor(l) {
     this.length = l;
+    this.id = this.createCustomID();
+  }
+
+  getID() {
+    return this.id;
   }
 
   getLength() {
@@ -21,6 +30,11 @@ class Ship {
 
   getReservedPositions() {
     return this.reservedPositions;
+  }
+
+  createCustomID() {
+    let nanoid = customAlphabet(CUSTOM_ALPHABET, SIZE_ID);
+    return nanoid();
   }
 
   clearReservedPositions() {

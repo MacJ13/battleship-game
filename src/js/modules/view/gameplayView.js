@@ -1,3 +1,5 @@
+import { HORIZONTAL, VERTICAL } from "../../utils/constants";
+
 class GameplayView {
   gameEl = document.querySelector(".game");
   gameUserEl = document.getElementById("user");
@@ -119,7 +121,7 @@ class GameplayView {
       this.gameShipObjectEl.appendChild(span);
     }
 
-    if (direction === "horizontal") {
+    if (direction === HORIZONTAL) {
       this.gameShipObjectEl.style.gridTemplateColumns = `repeat(${this.gameShipObjectEl.children.length}, 1fr)`;
     } else {
       this.gameShipObjectEl.style.gridTemplateColumns = `repeat(1, 1fr)`;
@@ -132,8 +134,8 @@ class GameplayView {
     const { posA, posB, direction } = dataBoard;
 
     for (let i = 0; i < ship.getLength(); i++) {
-      const cellPosA = direction === "vertical" ? i * 1 + +posA : +posA;
-      const cellPosB = direction == "vertical" ? +posB : +posB + i * 1;
+      const cellPosA = direction === VERTICAL ? i * 1 + +posA : +posA;
+      const cellPosB = direction === VERTICAL ? +posB : +posB + i * 1;
       const partEl = this.gameUserEl.querySelector(
         `[data-pos-a="${cellPosA}"][data-pos-b="${cellPosB}"]`
       );

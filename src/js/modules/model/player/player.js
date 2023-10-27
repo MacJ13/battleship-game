@@ -16,13 +16,6 @@ class Player {
     return this.type;
   }
 
-  addShips() {
-    SHIP_SIZES.forEach((size) => {
-      let ship = new Ship(size);
-      this.ships.push(ship);
-    });
-  }
-
   getShips() {
     return this.ships;
   }
@@ -45,6 +38,18 @@ class Player {
 
   clearPlayerBoard() {
     this.gameboard.createGameboard();
+  }
+
+  resetShips() {
+    this.addShips();
+  }
+
+  addShips() {
+    if (this.ships.length !== 0) this.ships.length = 0;
+    SHIP_SIZES.forEach((size) => {
+      let ship = new Ship(size);
+      this.ships.push(ship);
+    });
   }
 
   addRandomShipsPosition() {

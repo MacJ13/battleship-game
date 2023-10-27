@@ -1,10 +1,11 @@
+import { HORIZONTAL, VERTICAL } from "../../../utils/constants";
 import { getRandomNumber } from "../../../utils/helpers";
 
 class Gameboard {
   static maxSize = 10;
   board = [];
 
-  directions = ["horizontal", "vertical"];
+  directions = [HORIZONTAL, VERTICAL];
 
   constructor() {
     this.createGameboard();
@@ -58,7 +59,7 @@ class Gameboard {
     const direction = this.getDirection();
     const shipLength = ship.getLength();
 
-    if (direction === "horizontal") {
+    if (direction === HORIZONTAL) {
       // check if we can ship lenght can be put in current cell;
       if (shipLength + posB > Gameboard.maxSize) return;
       //check if other cells for ship is empty or reserved
@@ -88,7 +89,7 @@ class Gameboard {
           ship.addReservedPositions({ posA: posA + i, posB: posB + j });
         }
       }
-    } else if (direction === "vertical") {
+    } else if (direction === VERTICAL) {
       if (shipLength + posA > Gameboard.maxSize) return;
 
       // check if cell is empty or reserved for ship length

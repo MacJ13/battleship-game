@@ -175,6 +175,7 @@ const runGame = () => {
   computer.addGameboardPositions();
 
   game.clearQueueShip();
+  gameplayView.hidePlayButton();
   gameplayView.renderPlayerTurn(user.getName());
   gameplayView.onClickComputerGameboard(playGame);
 };

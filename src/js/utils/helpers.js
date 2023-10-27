@@ -31,3 +31,7 @@ export const binarySearch = function (arr, index) {
 
   return -1;
 };
+
+export const getRandomNumber = (max) => {
+  return Math.floor(Math.random() * max);
+};

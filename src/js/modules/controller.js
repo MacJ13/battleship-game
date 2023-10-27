@@ -71,7 +71,6 @@ const playComputerTurn = () => {
   const enemy = game.getEnemyPlayer();
   /// THIS WHERE IT ENDED
   const randomPosition = computer.getEnemyPositionBoard(enemy.getPlayerBoard());
-
   attackGameboard(randomPosition);
 };
 
@@ -107,6 +106,7 @@ const updateGame = (ship) => {
       // we remove also reserved positions around ship fields from potential computer positions
       currentPlayer.clearReservedPositions(ship.getReservedPositions());
     }
+    enemyPlayer.increaseSunkenShips();
     // set reserved cells as marked
     enemyPlayer.addReservedShipPositions(ship.getReservedPositions());
 
@@ -118,14 +118,12 @@ const updateGame = (ship) => {
 
     // render sunk ship on ship list element
     gameplayView.renderSunkShip(enemyPlayer);
-
-    // check if all enemy ships are sunken
-    if (enemyPlayer.allShipsSink()) {
-      gameplayView.removeClickComputerGameboard(playGame);
-      game.setTimer(endGame);
-    }
   }
-
+  // check if all enemy ships are sunken
+  if (enemyPlayer.allSunkenShips()) {
+    gameplayView.removeClickComputerGameboard(playGame);
+    game.setTimer(endGame);
+  }
   // make actions with exist ship to note on hit boat on
   // if(!game.userPlaying())
   // // we
@@ -157,9 +155,6 @@ const attackGameboard = (position) => {
   updateGame(ship);
 
   if (game.userPlaying()) return;
-
-  // game.setTimer(playComputer);
-  // ADD SET TIEMOUT FOR COMPUTER'S TURN
   game.setTimer(playComputerTurn);
 };
 
@@ -177,6 +172,7 @@ const runGame = () => {
   computer.addRandomShipsPosition();
   computer.addGameboardPositions();
 
+  game.clearQueueShip();
   gameplayView.renderPlayerTurn(user.getName());
   gameplayView.onClickComputerGameboard(playGame);
 };
@@ -201,8 +197,22 @@ const startGame = (name) => {
   gameplayView.onClickPlayBtn(runGame);
 };
 
+const restartGame = function () {
+  game.restartGame();
+
+  gameplayView.renderGameplay(game.getPlayers());
+  gameplayView.renderShipPick(
+    game.getQueueShip(),
+    game.getCurrentShipLeft(),
+    game.getGameboardDirection()
+  );
+
+  modalView.toggleModal();
+};
+
 const init = () => {
   menuView.onClickStartButton(startGame);
+  modalView.onClickRestartBtn(restartGame);
 };
 
 export default init;

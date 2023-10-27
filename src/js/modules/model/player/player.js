@@ -6,6 +6,7 @@ class Player {
   type;
   gameboard = new Gameboard();
   ships = [];
+  sunkenShips = 0;
 
   constructor(type) {
     this.type = type;
@@ -18,10 +19,6 @@ class Player {
 
   getShips() {
     return this.ships;
-  }
-
-  allShipsSink() {
-    return this.ships.every((ship) => ship.getSunk());
   }
 
   getPlayerBoard() {
@@ -41,6 +38,7 @@ class Player {
   }
 
   resetShips() {
+    this.sunkenShips = 0;
     this.addShips();
   }
 
@@ -71,6 +69,14 @@ class Player {
 
   addReservedShipPositions(reservedPositions) {
     this.gameboard.addReservedShipPositions(reservedPositions);
+  }
+
+  increaseSunkenShips() {
+    this.sunkenShips++;
+  }
+
+  allSunkenShips() {
+    return this.sunkenShips === this.ships.length;
   }
 }
 

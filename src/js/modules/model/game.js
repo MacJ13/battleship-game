@@ -32,6 +32,14 @@ class Game {
     return this.currentPlayer.getName();
   }
 
+  getPlayers() {
+    return [this.currentPlayer, this.enemyPlayer];
+  }
+
+  getGameboardDirection() {
+    return this.currentPlayer.getCurrentBoardDirection();
+  }
+
   userPlaying() {
     return this.currentPlayer instanceof User;
   }
@@ -42,12 +50,17 @@ class Game {
     this.enemyPlayer = temp;
   }
 
-  getPlayers() {
-    return [this.currentPlayer, this.enemyPlayer];
-  }
+  restartGame() {
+    if (!this.userPlaying()) {
+      this.switchPlayers();
+    }
 
-  getGameboardDirection() {
-    return this.currentPlayer.getCurrentBoardDirection();
+    for (let player of this.getPlayers()) {
+      player.clearPlayerBoard();
+      player.resetShips();
+    }
+
+    this.addQueueShips();
   }
 
   changeGameboardDirection() {
@@ -98,6 +111,12 @@ class Game {
 
   getTimer() {
     return this.timer;
+  }
+
+  stopPlaying() {
+    return (
+      this.enemyPlayer.allSunkenShips() || this.currentPlayer.allSunkenShips()
+    );
   }
 }
 

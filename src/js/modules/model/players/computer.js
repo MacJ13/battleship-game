@@ -33,10 +33,14 @@ class Computer extends Player {
 
   // method add all possible board positions
   // to availablePositions array
-  addGameboardPositions() {
+  addGameboardPositions(board) {
+    // set user board for computer to know what moves it can do
+    // around hit ship cell
+    this.potentialShipPositions.setBoard(board);
+
     if (this.availablePositions.length !== 0)
       this.availablePositions.length = 0;
-    const board = this.getPlayerBoard();
+    // const board = this.getPlayerBoard();
 
     for (let i = 0; i < board.length; i++) {
       for (let j = 0; j < board[i].length; j++) {
@@ -46,12 +50,10 @@ class Computer extends Player {
   }
 
   // method returns potential board ship position for computer
-  getEnemyPositionBoard(board) {
+  getEnemyPositionBoard() {
     // if  ship was hit, get only positions
     // around that ship hit position
     if (this.shipHit) {
-      // get position around position of hit ship
-      this.potentialShipPositions.setBoard(board);
       const nextPosition = this.potentialShipPositions.getAdjacentHitPositions(
         this.position
       );

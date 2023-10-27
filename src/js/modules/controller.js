@@ -56,7 +56,7 @@ const playComputerTurn = () => {
   // now enemy is user player !!!
   const computer = game.getCurrentPlayer();
   const enemy = game.getEnemyPlayer();
-  const randomPosition = computer.getEnemyPositionBoard(enemy.getPlayerBoard());
+  const randomPosition = computer.getEnemyPositionBoard();
   attackGameboard(randomPosition);
 };
 
@@ -156,7 +156,7 @@ const runGame = () => {
   const user = game.getCurrentPlayer();
   const computer = game.getEnemyPlayer();
   computer.addRandomShipsPosition();
-  computer.addGameboardPositions();
+  computer.addGameboardPositions(user.getPlayerBoard());
 
   game.clearQueueShip();
   gameplayView.hidePlayButton();

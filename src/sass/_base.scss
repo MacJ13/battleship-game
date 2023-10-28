@@ -28,6 +28,14 @@ html {
 
 body {
   background-color: #f0f9ff;
+  background-image: linear-gradient(
+      rgb(249, 250, 251) 0%,
+      rgba(249, 250, 251, 0.6) 80%,
+      rgba(249, 250, 251, 0.3) 100%
+    ),
+    url(/src/assets/battleship.jpg);
+  background-position: center;
+  background-attachment: fixed;
   color: $main-color;
   min-height: 100vh;
   position: relative;
@@ -50,12 +58,12 @@ button {
   font-family: "Montserrat", sans-serif;
 }
 
-button:hover {
-  opacity: 0.75;
-}
-
 input:focus {
   outline: none;
+}
+
+.body {
+  padding: 0 3.75%;
 }
 
 .header {
@@ -76,6 +84,10 @@ input:focus {
 
 .h2 {
   font-size: 2.25rem;
+}
+
+.h3 {
+  font-size: 1.35rem;
 }
 
 .modal {

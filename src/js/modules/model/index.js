@@ -1,3 +1,4 @@
+import { TIME_OUT } from "../../utils/constants";
 import Computer from "./players/computer";
 import User from "./players/user";
 import { Queue } from "./queue/queue";
@@ -114,7 +115,7 @@ class Game {
     this.timer = setTimeout(() => {
       this.timer = null;
       cb();
-    }, 750);
+    }, TIME_OUT);
   }
 
   getTimer() {

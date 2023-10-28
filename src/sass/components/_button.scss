@@ -37,3 +37,17 @@ $btn-bg-color: #052236;
     box-shadow: 0 25px 50px -12px inset rgba(219, 219, 219, 0.225);
   }
 }
+
+#restart {
+  border: 1px solid #ffffff16;
+  font-size: 1.25rem;
+
+  letter-spacing: 2px;
+  padding: 0.75rem;
+  text-transform: uppercase;
+  width: 12.5rem;
+
+  &:hover {
+    box-shadow: 0 25px 50px -12px inset rgba(219, 219, 219, 0.225);
+  }
+}

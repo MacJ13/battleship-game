@@ -11,8 +11,7 @@ $cell-reserved-bg: #cfe9fb;
 $cell-hit-bg: #f87171;
 $cell-miss-bg: #082f49;
 
-$cell-ship-bg: #3989d9 !important;
-// $cell-ship-bg: #3b82f6 !important;
+$cell-ship-bg: #3b82f6 !important;
 $cell-hit-color: #f0f9ff;
 
 $game-btn-bg: #052236;
@@ -162,15 +161,6 @@ $game-ship-border: 2px solid #fff;
     width: 100%;
   }
 
-  //   &-btn {
-  //     background-color: $game-btn-bg;
-  //     color: $cell-hit-color;
-  //     font-size: 1rem;
-  //     padding: 0.65rem 0;
-  //     text-transform: capitalize;
-  //     width: 8rem;
-  //   }
-
   &-ship {
     display: flex;
     flex-direction: column;
@@ -189,8 +179,10 @@ $game-ship-border: 2px solid #fff;
     }
 
     &-object {
+      background-color: transparent;
       background-color: $game-ship-bg;
       border: $game-ship-border;
+      opacity: 0.8;
       cursor: pointer;
       display: grid;
       flex: 1;

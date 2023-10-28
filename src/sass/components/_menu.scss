@@ -6,10 +6,15 @@ $focus-input: #85bafb;
 $box-bg-color: #f0f9ff;
 
 .menu {
+  background-color: $menu-bg-color;
   display: none;
   margin: auto;
   max-width: 80rem;
   padding: 2.5rem 1.5rem;
+
+  &::before {
+    border: 2px solid $text-color;
+  }
 
   &-title {
     color: $text-color;
@@ -48,7 +53,6 @@ $box-bg-color: #f0f9ff;
 
 .box,
 .menu {
-  background-color: $menu-bg-color;
   overflow: hidden;
   position: relative;
   width: 100%;
@@ -56,7 +60,7 @@ $box-bg-color: #f0f9ff;
 
   &::before {
     border-radius: 1rem;
-    border: 2px solid $box-bg-color;
+
     box-shadow: 0 25px 50px -12px inset rgba(219, 219, 219, 0.15);
     content: "";
     left: 0.75rem;
@@ -70,18 +74,23 @@ $box-bg-color: #f0f9ff;
 
 .box {
   align-items: center;
-
-  color: $text-color;
+  background-color: $text-color;
+  color: $menu-bg-color;
   display: flex;
   flex-direction: column;
   justify-content: center;
   max-width: 40rem;
   padding: 2.5rem;
+
+  &::before {
+    border: 3px solid $menu-bg-color;
+  }
 }
 
 .result {
-  font-size: 2.25rem;
-  letter-spacing: 3px;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 2.75rem !important;
+  letter-spacing: 0.5rem;
   text-transform: uppercase;
   margin-bottom: 1rem;
 }

@@ -7,8 +7,9 @@ $box-bg-color: #f0f9ff;
 
 .menu {
   display: none;
-  background-color: $menu-bg-color;
-  padding: 1.5rem;
+  margin: auto;
+  max-width: 80rem;
+  padding: 2.5rem 1.5rem;
 
   &-title {
     color: $text-color;
@@ -19,53 +20,79 @@ $box-bg-color: #f0f9ff;
   &-form {
     display: flex;
     justify-content: space-evenly;
-    margin-bottom: 2rem;
   }
 
   &-field {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     & > input {
+      background: linear-gradient(to bottom, #dbdbdb, #f9f9f9, #dbdbdb);
       background-color: $text-color;
+      border-radius: 0.25rem;
+
       font-size: 1.25rem;
 
-      max-width: 17.5rem;
-      padding: 0.65rem 0.5rem;
-      width: 100%;
+      // max-width: 17.5rem;
+      padding: 0.75rem 0.5rem;
+      width: 18.25rem;
 
       &:focus {
-        outline: 5px solid $focus-input;
+        box-shadow: 0 25px 50px -12px inset rgba(0, 0, 0, 0.15);
+        // outline: 5px solid $focus-input;
       }
-    }
-  }
-
-  &-button {
-    margin-top: 0.75rem;
-    & > button {
-      background-color: $button-bg-color;
-      color: $text-color;
-      display: inline-block;
-      font-size: 1.25rem;
-      letter-spacing: 0.25rem;
-      max-width: 16.2rem;
-      padding: 1rem 0;
-      text-transform: uppercase;
-      width: 100%;
     }
   }
 }
 
 .box {
   align-items: center;
-  background-color: $box-bg-color;
 
+  color: $text-color;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  max-width: 30rem;
+  max-width: 40rem;
   padding: 2.5rem;
-  width: 100%;
 }
 
 .result {
   font-size: 2rem;
-  margin-bottom: 2.5rem;
+  margin-bottom: 1.5rem;
+}
+
+#target-icon {
+  position: absolute;
+  bottom: -12.5%;
+  opacity: 0.225;
+  right: -5%;
+
+  transform: rotate(25deg);
+  z-index: -1;
+
+  width: 20rem;
+  height: 20rem;
+}
+
+.box,
+.menu {
+  background-color: $menu-bg-color;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  z-index: 0;
+
+  &::before {
+    border-radius: 1rem;
+    border: 2px solid $box-bg-color;
+    box-shadow: 0 25px 50px -12px inset rgba(219, 219, 219, 0.15);
+    content: "";
+    left: 0.75rem;
+    position: absolute;
+    top: 0.75rem;
+    width: calc(100% - 1.5rem);
+    height: calc(100% - 1.5rem);
+    z-index: -1;
+  }
 }

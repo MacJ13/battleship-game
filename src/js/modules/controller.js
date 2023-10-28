@@ -55,7 +55,6 @@ const playComputerTurn = () => {
   // now current player is Computer player !!!!
   // now enemy is user player !!!
   const computer = game.getCurrentPlayer();
-  const enemy = game.getEnemyPlayer();
   const randomPosition = computer.getEnemyPositionBoard();
   attackGameboard(randomPosition);
 };
@@ -73,6 +72,7 @@ const updateGame = (ship) => {
   if (!ship) {
     game.switchPlayers();
     gameplayView.changePlayerTurn(game.getCurrentName());
+    gameplayView.switchGamePanel();
     return;
   }
 
@@ -161,6 +161,7 @@ const runGame = () => {
   game.clearQueueShip();
   gameplayView.hidePlayButton();
   gameplayView.renderPlayerTurn(user.getName());
+  gameplayView.switchGamePanel();
   gameplayView.onClickComputerGameboard(playGame);
 };
 

@@ -43,7 +43,14 @@ class GameplayView {
       this.renderShipList(shipListEl, ships);
     });
 
+    this.renderInitialGamePanels();
+    // this.toggleGamePanel(this.gameComputerEl);
     this.showGameplay();
+  }
+
+  renderInitialGamePanels() {
+    this.gameUserEl.querySelector(".game-panel").classList.remove("disabled");
+    this.gameComputerEl.querySelector(".game-panel").classList.add("disabled");
   }
 
   renderPlayername(element, name) {
@@ -144,11 +151,11 @@ class GameplayView {
   }
 
   renderPlayerTurn(name) {
-    const html = `<div class="game-turn">
+    const html = `<div class="game-turn scale">
     <div class="game-current-name">${name}'s turn</div>
   </div>`;
-
     this.gameEl.insertAdjacentHTML("beforeend", html);
+    // this.gameEl.insertAdjacentHTML("afterbegin", html);
   }
 
   clearPlayerTurn() {
@@ -195,14 +202,6 @@ class GameplayView {
     shipItemEl.classList.add("sunk");
   }
 
-  // renderSunkShip(player) {
-  //   const shipListEl = document
-  //     .getElementById(player.getType())
-  //     .querySelector(".game-list-ship");
-
-  //   this.renderShipList(shipListEl, player.getShips());
-  // }
-
   changePlayerTurn(name) {
     const el = this.gameEl.querySelector(".game-current-name");
     el.textContent = `${name}'s turn`;
@@ -244,6 +243,15 @@ class GameplayView {
         cell.classList.remove("reserved");
       }
     });
+  }
+
+  toggleGamePanel(el) {
+    el.querySelector(".game-panel").classList.toggle("disabled");
+  }
+
+  switchGamePanel() {
+    this.toggleGamePanel(this.gameComputerEl);
+    this.toggleGamePanel(this.gameUserEl);
   }
 
   getComputerBoardPosition(event) {

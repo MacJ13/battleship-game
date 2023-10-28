@@ -1,6 +1,7 @@
 class ModalView {
   modalEl = document.querySelector(".modal");
   resultEl = document.querySelector(".result");
+  descEl = document.querySelector(".desc");
   restartBtnEl = document.getElementById("restart");
 
   toggleModal() {
@@ -8,7 +9,8 @@ class ModalView {
   }
 
   renderGameResult(name) {
-    this.resultEl.textContent = `${name} has won!`;
+    this.resultEl.textContent = name === "computer" ? "Defeat!" : "Victory!";
+    this.descEl.textContent = `${name} has won!`;
   }
 
   onClickRestartBtn(cb) {

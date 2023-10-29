@@ -83,6 +83,7 @@ $box-bg-color: #f0f9ff;
   padding: 2.5rem;
 
   &::before {
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 25px 50px -3px inset;
     border: 3px solid $menu-bg-color;
   }
 }

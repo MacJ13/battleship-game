@@ -24,13 +24,13 @@ $btn-bg-color: #052236;
 
 #btn-error {
   background-color: transparent;
-  color: $btn-txt-color;
+  font-weight: 800;
+  color: #f87171;
 
   &:hover {
-    opacity: 0.8;
+    opacity: 0.9;
   }
   &:active {
-    opacity: 0.6;
     transform: scale(1.05);
   }
 }

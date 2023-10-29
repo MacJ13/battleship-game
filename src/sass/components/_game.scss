@@ -29,11 +29,20 @@ $game-ship-border: 2px solid #fff;
     display: flex;
     gap: 5rem;
     justify-content: center;
+
+    @media screen and (max-width: 800px) {
+      flex-direction: column-reverse;
+      gap: 2.5rem;
+    }
   }
 
   &-box {
     display: flex;
     gap: 2rem;
+
+    @media screen and (max-width: 800px) {
+      justify-content: center;
+    }
 
     & .disabled {
       position: relative;
@@ -83,7 +92,7 @@ $game-ship-border: 2px solid #fff;
     flex-direction: column;
     position: relative;
 
-    transition: opacity 0.35s ease-in;
+    transition: opacity 0.1s 0.1s linear;
   }
 
   &-board {
@@ -113,10 +122,12 @@ $game-ship-border: 2px solid #fff;
 
     &-ship {
       background-color: $cell-ship-bg;
+      box-shadow: 0 25px 50px -12px inset rgba(219, 219, 219, 0.15);
     }
 
     & .hit {
       background-color: $cell-hit-bg;
+
       color: $cell-hit-color;
 
       height: 100%;
@@ -200,6 +211,7 @@ $game-ship-border: 2px solid #fff;
       align-items: center;
       background-color: $game-btn-bg;
       border-radius: 2rem;
+      box-shadow: 0 25px 50px -12px inset rgba(219, 219, 219, 0.15);
 
       color: $cell-bg-color;
       display: flex;
@@ -239,8 +251,15 @@ $game-ship-border: 2px solid #fff;
 
 #computer {
   flex-direction: row-reverse;
+
+  @media screen and (max-width: 800px) {
+    flex-direction: row;
+  }
   & .game-list-ship {
     align-items: start;
+    @media screen and (max-width: 800px) {
+      align-items: end;
+    }
   }
 
   & .game-board {

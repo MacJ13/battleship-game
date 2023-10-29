@@ -24,6 +24,10 @@ $modal-bg: #133d5963;
 html {
   box-sizing: border-box;
   font-size: 16px;
+
+  @media screen and (max-width: 900px) {
+    font-size: 14px;
+  }
 }
 
 body {
@@ -80,6 +84,14 @@ input:focus {
   font-family: "Times New Roman", Times, serif;
   text-transform: uppercase;
   letter-spacing: 0.5rem;
+
+  @media screen and (max-width: 1000px) {
+    font-size: 3em;
+  }
+
+  @media screen and (max-width: 800px) {
+    font-size: 2.5em;
+  }
 }
 
 .h2 {

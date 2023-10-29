@@ -7,6 +7,7 @@ $box-bg-color: #f0f9ff;
 
 .menu {
   background-color: $menu-bg-color;
+  color: $text-color;
   display: none;
   margin: auto;
   max-width: 80rem;
@@ -16,8 +17,20 @@ $box-bg-color: #f0f9ff;
     border: 2px solid $text-color;
   }
 
+  &-error {
+    // background-color: $focus-input;
+    color: #fbb8b8;
+    padding: 0.825rem 2rem;
+    position: absolute;
+    top: -2.25rem;
+    left: -2rem;
+
+    &-msg {
+      margin-right: 0.25rem;
+    }
+  }
+
   &-title {
-    color: $text-color;
     text-align: center;
     margin-bottom: 2rem;
   }
@@ -28,10 +41,12 @@ $box-bg-color: #f0f9ff;
   }
 
   &-field {
+    align-items: center;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+
+    position: relative;
     & > input {
       background: linear-gradient(to bottom, #dbdbdb, #f9f9f9, #dbdbdb);
       background-color: $text-color;

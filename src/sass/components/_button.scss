@@ -22,6 +22,19 @@ $btn-bg-color: #052236;
   }
 }
 
+#btn-error {
+  background-color: transparent;
+  color: $btn-txt-color;
+
+  &:hover {
+    opacity: 0.8;
+  }
+  &:active {
+    opacity: 0.6;
+    transform: scale(1.05);
+  }
+}
+
 #btn-start-game {
   border: 1px solid #ffffff16;
   font-size: 1.25rem;

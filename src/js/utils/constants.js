@@ -6,4 +6,5 @@ export const SIZE_ID = 10;
 export const HORIZONTAL = "horizontal";
 export const VERTICAL = "vertical";
 
-export const TIME_OUT = 1000;
+export const TIME_OUT = 1;
+export const TIME_DELAY = 0.35;

@@ -73,21 +73,36 @@ $game-ship-border: 2px solid #fff;
     flex-direction: column;
   }
 
+  &-item-ship {
+    display: flex;
+    gap: 0.25rem;
+    opacity: 0.25;
+  }
+
   &-list-ship {
     align-items: end;
     display: flex;
     flex-direction: column;
     gap: 0.3rem;
+    position: relative;
 
     & .sunk {
       opacity: 1;
-    }
-  }
+      animation: sunkShip 0.55s linear;
 
-  &-item-ship {
-    display: flex;
-    gap: 0.25rem;
-    opacity: 0.25;
+      &::before {
+        background-color: #17588425;
+        border-radius: 2rem;
+        content: "";
+        height: 150%;
+        left: -25%;
+        position: absolute;
+        top: -25%;
+        width: 150%;
+        opacity: 0;
+        animation: sunkBackground 0.55s linear;
+      }
+    }
   }
 
   &-item-part {

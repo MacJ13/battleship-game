@@ -1,18 +1,40 @@
 class MenuView {
   menuEl = document.querySelector(".menu");
+  fieldEl = document.querySelector(".menu-field");
   inputEl = document.getElementById("player_name");
+
   startBtn = document.getElementById("btn-start-game");
+
+  menuErrorEl;
 
   constructor() {
     this.renderIcon();
     this.inputEl.focus();
+    this.onChangeInput();
+    this.menuErrorEl = this.renderMenuError();
   }
 
   onClickStartButton(callback) {
     this.startBtn.addEventListener("click", () => {
       callback(this.inputEl.value);
-      this.menuEl.classList.remove("show");
     });
+  }
+
+  showError() {
+    if (!document.contains(this.menuErrorEl))
+      this.fieldEl.insertAdjacentElement("afterbegin", this.menuErrorEl);
+  }
+
+  renderMenuError() {
+    const div = document.createElement("div");
+    div.className = "menu-error";
+    div.textContent = "Ups! You forgot a name!";
+
+    return div;
+  }
+
+  hideStartMenu() {
+    this.menuEl.classList.remove("show");
   }
 
   renderIcon() {
@@ -36,6 +58,13 @@ class MenuView {
   </svg>`;
 
     this.menuEl.insertAdjacentHTML("beforeend", svg);
+  }
+
+  onChangeInput() {
+    this.inputEl.addEventListener("input", (e) => {
+      if (e.target.value && document.contains(this.menuErrorEl))
+        this.fieldEl.removeChild(this.menuErrorEl);
+    });
   }
 }
 

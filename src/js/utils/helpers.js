@@ -35,3 +35,10 @@ export const binarySearch = function (arr, index) {
 export const getRandomNumber = (max) => {
   return Math.floor(Math.random() * max);
 };
+
+export const sleep = (s) => {
+  return new Promise((resolve) => setTimeout(resolve, s * 1000));
+  // return new Promise((resolve) => {
+  //   setTimeout(() => {}, s);
+  // });
+};

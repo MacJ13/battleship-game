@@ -204,7 +204,13 @@ class GameplayView {
 
   changePlayerTurn(name) {
     const el = this.gameEl.querySelector(".game-current-name");
+    el.classList.remove("animate-turn");
     el.textContent = `${name}'s turn`;
+  }
+
+  showPlayerTurn() {
+    const el = this.gameEl.querySelector(".game-current-name");
+    el.classList.add("animate-turn");
   }
 
   showShipPick() {
@@ -229,7 +235,7 @@ class GameplayView {
       const { reserved } = board[+posA][+posB];
 
       if (reserved) {
-        cell.classList.add("reserved");
+        cell.classList.add("cell-disabled");
       }
     });
   }
@@ -240,7 +246,7 @@ class GameplayView {
       const { reserved } = board[+posA][+posB];
 
       if (reserved) {
-        cell.classList.remove("reserved");
+        cell.classList.remove("cell-disabled");
       }
     });
   }

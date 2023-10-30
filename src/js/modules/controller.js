@@ -146,7 +146,7 @@ const attackGameboard = async (position) => {
 
 // function make gameplay between user and computer
 const playGame = (event) => {
-  if (game.getTimer() || game.getDelay()) return;
+  if (game.getTimer() || game.getDelay() || !game.userPlaying()) return;
   const position = gameplayView.getComputerBoardPosition(event);
   if (!position) return;
   attackGameboard(position);

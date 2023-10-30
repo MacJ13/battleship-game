@@ -67,12 +67,13 @@ const endGame = () => {
 };
 
 // function update game state
-const updateGame = (ship) => {
+const updateGame = async (ship) => {
   // check if ship exists on cell,
   if (!ship) {
     game.switchPlayers();
-    gameplayView.changePlayerTurn(game.getCurrentName());
     gameplayView.switchGamePanel();
+    gameplayView.changePlayerTurn(game.getCurrentName());
+    gameplayView.showPlayerTurn();
     return;
   }
 
@@ -114,7 +115,7 @@ const updateGame = (ship) => {
   }
 };
 
-const attackGameboard = (position) => {
+const attackGameboard = async (position) => {
   // const position = gameplayView.getComputerBoardPosition(event);
   // if (!position) return;
 
@@ -138,7 +139,6 @@ const attackGameboard = (position) => {
 
   // update game state
   updateGame(ship);
-
   // stop turn when current player is user or game is over
   if (game.userPlaying() || game.stopPlaying()) return;
   game.setTimer(playComputerTurn);
@@ -146,7 +146,7 @@ const attackGameboard = (position) => {
 
 // function make gameplay between user and computer
 const playGame = (event) => {
-  if (game.getTimer()) return;
+  if (game.getTimer() || game.getDelay()) return;
   const position = gameplayView.getComputerBoardPosition(event);
   if (!position) return;
   attackGameboard(position);
@@ -166,6 +166,10 @@ const runGame = () => {
 };
 
 const startGame = (name) => {
+  if (!name) {
+    menuView.showError();
+    return;
+  }
   const players = game.getPlayers();
   const playerGameboard = game.getCurrentPlayerGameboard();
   const shipPick = game.getShipPick();
@@ -182,6 +186,7 @@ const startGame = (name) => {
   gameplayView.onClickRandomBtn(addShipPositionRandom);
   gameplayView.onClickResetBtn(resetGameboard);
   gameplayView.onClickPlayBtn(runGame);
+  menuView.hideStartMenu();
 };
 
 const restartGame = function () {

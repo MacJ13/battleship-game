@@ -1,4 +1,3 @@
-import { TIME_OUT } from "../../utils/constants";
 import Computer from "./players/computer";
 import User from "./players/user";
 import { Queue } from "./queue/queue";
@@ -8,6 +7,7 @@ class Game {
   currentPlayer = new User();
   enemyPlayer = new Computer();
   timer;
+  delay;
 
   constructor() {
     this.addQueueShips();
@@ -120,6 +120,10 @@ class Game {
 
   getTimer() {
     return this.timer;
+  }
+
+  getDelay() {
+    return this.delay;
   }
 
   stopPlaying() {

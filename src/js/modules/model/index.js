@@ -1,3 +1,5 @@
+import { TIME_DELAY, TIME_OUT } from "../../utils/constants";
+import { sleep } from "../../utils/helpers";
 import Computer from "./players/computer";
 import User from "./players/user";
 import { Queue } from "./queue/queue";
@@ -111,12 +113,28 @@ class Game {
     return this.shipQueue.countElement(cb);
   }
 
-  setTimer(cb) {
-    this.timer = setTimeout(() => {
-      this.timer = null;
-      cb();
-    }, TIME_OUT);
+  async setTimer(cb) {
+    this.timer = true;
+
+    await sleep(TIME_OUT);
+    this.timer = false;
+    cb();
+    this.delay = true;
+    await sleep(TIME_DELAY);
+    this.delay = false;
   }
+
+  // setTimer(cb) {
+  //   this.timer = setTimeout(() => {
+  //     this.timer = null;
+  //     console.log("timer is over");
+  //     cb();
+  //     this.delay = setTimeout(() => {
+  //       this.delay = null;
+  //       console.log("delay is over");
+  //     }, 350);
+  //   }, TIME_OUT);
+  // }
 
   getTimer() {
     return this.timer;

@@ -27,6 +27,8 @@ $game-ship-border: 2px solid #fff;
   max-width: 1000px;
   width: 100%;
 
+  animation: showElement 0.75s linear;
+
   &-container {
     display: flex;
     gap: 5rem;
@@ -231,11 +233,15 @@ $game-ship-border: 2px solid #fff;
       background-color: $game-ship-bg;
       border: $game-ship-border;
       opacity: 0.8;
-      cursor: pointer;
+      cursor: grab;
       display: grid;
       flex: 1;
       gap: 2px;
       grid-template-columns: repeat(4, 1fr);
+
+      &:active {
+        cursor: grabbing;
+      }
     }
 
     &-part {

@@ -48,3 +48,19 @@
     opacity: 0;
   }
 }
+
+@keyframes showElement {
+  from {
+    opacity: 0;
+    // transform: translateY(1rem);
+  }
+
+  25% {
+    // transform: translateY(0rem);
+    opacity: 0.75;
+  }
+
+  to {
+    opacity: 1;
+  }
+}

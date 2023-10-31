@@ -72,7 +72,7 @@
   }
 
   33% {
-    transform: scale(0.825);
+    transform: scale(1.25);
   }
 
   50% {
@@ -85,17 +85,13 @@
   }
 }
 
-@keyframes sunkBackground {
-  from {
-    opacity: 0;
-  }
-
+@keyframes sunkLine {
+  from,
   50% {
-    transform: scale(1.6);
-    opacity: 1;
+    width: 0%;
   }
 
   to {
-    opacity: 0;
+    width: calc(100% + (0.5rem));
   }
 }

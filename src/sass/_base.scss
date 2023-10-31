@@ -11,7 +11,7 @@
 }
 
 $main-color: #052236;
-$modal-bg: #133d5963;
+$modal-bg: #052236b9;
 
 *,
 *::after,
@@ -117,7 +117,7 @@ input:focus {
   opacity: 0;
   position: fixed;
   top: 0;
-  transition: opacity 0.75s ease-in-out;
+  transition: opacity 0.5s ease-in-out;
   width: 100%;
 
   z-index: 10;
@@ -132,5 +132,9 @@ input:focus {
 }
 
 .disabled {
+  opacity: 1;
+}
+
+.opaque {
   opacity: 1;
 }

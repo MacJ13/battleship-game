@@ -298,7 +298,7 @@ $game-ship-border: 2px solid #fff;
     margin-bottom: 1.5rem;
     width: 18.5rem;
 
-    animation: showElement 1s ease-in-out;
+    animation: showElement 3s linear;
   }
 
   &-current-name {
@@ -312,6 +312,14 @@ $game-ship-border: 2px solid #fff;
     text-transform: uppercase;
     transition: opacity 0.15s linear;
     word-spacing: 5px;
+  }
+
+  &-reset {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 1.5rem;
   }
 }
 

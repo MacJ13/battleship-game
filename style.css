@@ -500,12 +500,12 @@
 
 @font-face {
   font-family: "Montserrat";
-  src: url(../b8c6753baa964ccac1ba.ttf) format("truetype");
+  src: url(./Montserrat-Medium.ttf) format("truetype");
   font-weight: 400;
 }
 @font-face {
   font-family: "Montserrat";
-  src: url(../24785cc015b27a3e964b.ttf) format("truetype");
+  src: url(./Montserrat-Regular.ttf) format("truetype");
   font-weight: 500;
 }
 *,
@@ -528,7 +528,7 @@ html {
 
 body {
   background-color: #f0f9ff;
-  background-image: linear-gradient(rgb(249, 250, 251) 0%, rgba(249, 250, 251, 0.6) 80%, rgba(249, 250, 251, 0.3) 100%), url(../80fc53a65f362350a024.jpg);
+  background-image: linear-gradient(rgb(249, 250, 251) 0%, rgba(249, 250, 251, 0.6) 80%, rgba(249, 250, 251, 0.3) 100%), url(./battleship.jpg);
   background-position: center;
   background-attachment: fixed;
   color: #052236;

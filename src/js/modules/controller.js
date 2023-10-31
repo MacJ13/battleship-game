@@ -1,3 +1,4 @@
+import { sleep } from "../utils/helpers";
 import Game from "./model";
 import GameplayView from "./view/gameplayView";
 import MenuView from "./view/menuView";
@@ -60,10 +61,14 @@ const playComputerTurn = () => {
 };
 
 // function show modal window when player sunk all ships
-const endGame = () => {
+const endGame = async () => {
+  gameplayView.removeClickComputerGameboard(playGame);
   modalView.renderGameResult(game.getCurrentName());
-  modalView.toggleModal();
+
   gameplayView.clearPlayerTurn();
+  modalView.toggleModal();
+  await sleep(0.5);
+  modalView.animateModal();
 };
 
 // function update game state
@@ -110,8 +115,7 @@ const updateGame = async (ship) => {
   }
   // check if all enemy ships are sunken
   if (enemyPlayer.allSunkenShips()) {
-    gameplayView.removeClickComputerGameboard(playGame);
-    game.setTimer(endGame);
+    endGame();
   }
 };
 
@@ -189,12 +193,14 @@ const startGame = (name) => {
   menuView.hideStartMenu();
 };
 
-const restartGame = function () {
+const restartGame = async function () {
   game.restartGame();
 
   gameplayView.renderGameplay(game.getPlayers());
   gameplayView.renderShipPick(game.getShipPick());
 
+  modalView.animateModal();
+  await sleep(0.75);
   modalView.toggleModal();
 };
 

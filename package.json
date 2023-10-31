@@ -6,14 +6,23 @@
   "scripts": {
     "test": "jest --watch",
     "build": "webpack",
-    "start": "webpack serve --open"
+    "start": "webpack serve --open",
+    "predeploy:": "npm run build",
+    "deploy": "gh-pages -d dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MacJ13/battleship-game.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "homepage": "http://macj13.github.io/battle-ship",
   "devDependencies": {
     "@babel/preset-env": "^7.23.2",
     "css-loader": "^6.8.1",
+    "gh-pages": "^6.0.0",
+    "html-webpack-plugin": "^5.5.3",
     "jest": "^29.7.0",
     "mini-css-extract-plugin": "^2.7.6",
     "sass": "^1.69.3",

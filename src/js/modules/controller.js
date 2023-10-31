@@ -1,4 +1,4 @@
-import { sleep } from "../utils/helpers";
+import { confirmCurrentResetGame, sleep } from "../utils/helpers";
 import Game from "./model";
 import GameplayView from "./view/gameplayView";
 import MenuView from "./view/menuView";
@@ -65,10 +65,11 @@ const endGame = async () => {
   gameplayView.removeClickComputerGameboard(playGame);
   modalView.renderGameResult(game.getCurrentName());
 
-  gameplayView.clearPlayerTurn();
   modalView.toggleModal();
   await sleep(0.5);
   modalView.animateModal();
+  gameplayView.clearPlayerTurn();
+  gameplayView.clearCurrentResetBtn();
 };
 
 // function update game state
@@ -167,6 +168,8 @@ const runGame = () => {
   game.clearQueueShip();
   gameplayView.hidePlayButton();
   gameplayView.renderPlayerTurn(user.getName());
+  ///////////////////////////////
+  gameplayView.renderCurrentResetBtn(resetCurrentGame);
   gameplayView.switchGamePanel();
   gameplayView.onClickComputerGameboard(playGame);
 };
@@ -195,12 +198,22 @@ const startGame = (name) => {
   menuView.hideStartMenu();
 };
 
-const restartGame = async function () {
+const resetCurrentGame = () => {
+  if (game.getTimer() || game.getDelay() || !game.userPlaying()) return;
+  if (!confirmCurrentResetGame()) {
+    return;
+  }
   game.restartGame();
-
   gameplayView.renderGameplay(game.getPlayers());
   gameplayView.renderShipPick(game.getShipPick());
+  gameplayView.clearCurrentResetBtn();
+  gameplayView.clearPlayerTurn();
+};
 
+const restartGame = async function () {
+  game.restartGame();
+  gameplayView.renderGameplay(game.getPlayers());
+  gameplayView.renderShipPick(game.getShipPick());
   modalView.animateModal();
   await sleep(0.5);
   modalView.toggleModal();

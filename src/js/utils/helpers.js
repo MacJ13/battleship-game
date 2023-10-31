@@ -42,3 +42,7 @@ export const sleep = (s) => {
   //   setTimeout(() => {}, s);
   // });
 };
+
+export const confirmCurrentResetGame = () => {
+  return confirm("Are you sure you want to restart the game?");
+};

@@ -12,6 +12,8 @@
 
 $main-color: #052236;
 $modal-bg: #052236b9;
+$header-pd-vertical: 2.5rem;
+$h1-size: 3.5rem;
 
 *,
 *::after,
@@ -44,7 +46,6 @@ body {
   background-position: center;
   background-attachment: fixed;
   color: $main-color;
-  min-height: 100vh;
   position: relative;
   width: 100%;
   font-family: "Montserrat", sans-serif;
@@ -73,14 +74,10 @@ input:focus {
   outline: none;
 }
 
-.body {
-  padding: 0 3.75%;
-}
-
 .header {
   margin: auto;
   max-width: 1000px;
-  padding: 2.5rem 1rem;
+  padding: $header-pd-vertical 3.75%;
   width: 100%;
 
   & > * {
@@ -88,18 +85,23 @@ input:focus {
   }
 }
 
+.main {
+  min-height: calc(100vh - ($header-pd-vertical * 2) - $h1-size);
+  padding: 0 3.75%;
+}
+
 .h1 {
-  font-size: 3.5rem;
+  font-size: $h1-size;
   font-family: "Times New Roman", Times, serif;
   text-transform: uppercase;
   letter-spacing: 0.5rem;
 
   @media screen and (max-width: 1000px) {
-    font-size: 3em;
+    font-size: calc($h1-size - 0.5rem);
   }
 
   @media screen and (max-width: 800px) {
-    font-size: 2.5em;
+    font-size: calc($h1-size - 0.75rem);
   }
 }
 

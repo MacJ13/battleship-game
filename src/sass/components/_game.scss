@@ -292,6 +292,8 @@ $game-ship-border: 2px solid #fff;
     margin: auto;
     margin-bottom: 1.5rem;
     width: 18.5rem;
+
+    animation: showElement 1s ease-in-out;
   }
 
   &-current-name {

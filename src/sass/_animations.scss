@@ -95,3 +95,12 @@
     width: calc(100% + (0.5rem));
   }
 }
+
+@keyframes semiTransparency {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.5;
+  }
+}

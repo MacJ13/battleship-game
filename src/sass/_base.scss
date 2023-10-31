@@ -12,6 +12,8 @@
 
 $main-color: #052236;
 $modal-bg: #052236b9;
+$footer-txt-color: #f0f9ff;
+$el-pd-horizontal: 3.75%;
 $header-pd-vertical: 2.5rem;
 $h1-size: 3.5rem;
 
@@ -77,7 +79,7 @@ input:focus {
 .header {
   margin: auto;
   max-width: 1000px;
-  padding: $header-pd-vertical 3.75%;
+  padding: $header-pd-vertical $el-pd-horizontal;
   width: 100%;
 
   & > * {
@@ -87,7 +89,14 @@ input:focus {
 
 .main {
   min-height: calc(100vh - ($header-pd-vertical * 2) - $h1-size);
-  padding: 0 3.75%;
+  padding: 0 $el-pd-horizontal;
+}
+
+.footer {
+  padding: 0.33rem $el-pd-horizontal;
+  background-color: $main-color;
+  color: $footer-txt-color;
+  font-size: 0.925rem;
 }
 
 .h1 {
@@ -128,6 +137,20 @@ input:focus {
   width: 100%;
 
   z-index: 10;
+}
+.copyright {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.link {
+  margin-left: 0.75rem;
+  text-decoration: none;
+
+  &:hover {
+    opacity: 0.8;
+  }
 }
 
 .show {

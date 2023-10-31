@@ -9,12 +9,12 @@ class ModalView {
   }
 
   animateModal() {
-    this.modalEl.classList.toggle("disabled");
+    this.modalEl.classList.toggle("opaque");
   }
 
   renderGameResult(name) {
     this.resultEl.textContent = name === "computer" ? "Defeat!" : "Victory!";
-    this.descEl.textContent = `${name.toUpperCase()} has won!`;
+    this.descEl.textContent = `${name} has won!`;
   }
 
   onClickRestartBtn(cb) {

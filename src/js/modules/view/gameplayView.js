@@ -151,8 +151,8 @@ class GameplayView {
   }
 
   renderPlayerTurn(name) {
-    const html = `<div class="game-turn scale">
-    <div class="game-current-name">${name}'s turn</div>
+    const html = `<div class="game-turn">
+    <div class="game-current-name opaque">${name}'s turn</div>
   </div>`;
     this.gameEl.insertAdjacentHTML("beforeend", html);
     // this.gameEl.insertAdjacentHTML("afterbegin", html);
@@ -204,13 +204,13 @@ class GameplayView {
 
   changePlayerTurn(name) {
     const el = this.gameEl.querySelector(".game-current-name");
-    el.classList.remove("animate-turn");
     el.textContent = `${name}'s turn`;
+    el.classList.add("opaque");
   }
 
-  showPlayerTurn() {
+  hidePlayerTurn() {
     const el = this.gameEl.querySelector(".game-current-name");
-    el.classList.add("animate-turn");
+    el.classList.remove("opaque");
   }
 
   showShipPick() {

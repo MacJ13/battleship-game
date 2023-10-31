@@ -76,9 +76,11 @@ const updateGame = async (ship) => {
   // check if ship exists on cell,
   if (!ship) {
     game.switchPlayers();
+    gameplayView.hidePlayerTurn();
     gameplayView.switchGamePanel();
+    await sleep(0.15);
     gameplayView.changePlayerTurn(game.getCurrentName());
-    gameplayView.showPlayerTurn();
+
     return;
   }
 
@@ -200,7 +202,7 @@ const restartGame = async function () {
   gameplayView.renderShipPick(game.getShipPick());
 
   modalView.animateModal();
-  await sleep(0.75);
+  await sleep(0.5);
   modalView.toggleModal();
 };
 

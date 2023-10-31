@@ -46,6 +46,7 @@ $game-ship-border: 2px solid #fff;
 
     @media screen and (max-width: 800px) {
       justify-content: center;
+      margin-right: 4.75rem;
     }
 
     & > .disabled {
@@ -71,6 +72,10 @@ $game-ship-border: 2px solid #fff;
   &-ships {
     display: flex;
     flex-direction: column;
+
+    @media screen and (max-width: 800px) {
+      justify-content: start;
+    }
   }
 
   &-item-ship {

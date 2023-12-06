@@ -4,7 +4,9 @@
 
 This is the popular batlleship game. The game is played against computer.
 <br />
-I created algorithm for computer, that finds and hit first element of ship,  in order to detect next ship elements around that first hit. 
+I created algorithm for computer, when it finds and hit first element of ship 
+immediately search next ship elements around that first hit until doesn't sink all
+ship elements.
 Also I used jest library to test classes and methods created in project.
 
 ## Link

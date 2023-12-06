@@ -3,8 +3,8 @@
 ## Description
 
 This is the popular batlleship game. The game is played against computer.
-I created algorithm fo computer in order to find and detect ship hit and search around this hit another
-ship parts unitl it sinks whole ship.
+<br />
+I created algorithm for computer, that finds and hit first element of ship,  in order to detect next ship elements around that first hit. 
 Also I used jest library to test classes and methods created in project.
 
 ## Link
